@@ -1,0 +1,147 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%            FOLHA DE ROSTO                %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\thispagestyle{empty}
+\begin{titlepage}
+\begin{center}
+%%%%%%%%%%%%%%%%%%%%%
+\MakeUppercase{\AUTOR}\\ %<<<<<<< NOME DO ALUNO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2.5cm}
+%%%%%%%%%%%%%%%%%%%%
+\large{\textbf{\TITULO}}\\ %<<<<<<< TÍTULO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2cm}
+%%%%%%%%%%%%%%%%%%%%%
+\normalsize{\textbf{Versão \VERSAO}} % Ou versão corrigida
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{2cm}
+\end{center}
+
+%%%%%%%%%%%%%%%%%%
+%\hspace{.2\textwidth} % posicionando a minipage
+\begin{flushright}
+\begin{minipage}{0.6\textwidth}
+{\noindent Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia da Universidade Federal do Amazonas como parte dos requisitos necessários para obtenção do grau de Engenheiro Mecânico.} % Engenheira Mecânica}.
+%{\noindent Dissertação apresentada à Universidade Federal do Amazonas, no Programa de Pós-Graduação em Engenharia Mecânica, para a obtenção do título de Mestre em Ciências.}
+%{\noindent Tese apresentada à Universidade Federal do Amazonas, no Programa de Pós-Graduação em Engenharia Mecânica, para a obtenção do título de Doutor em Ciências.}
+\\ \\
+\end{minipage}
+\end{flushright}
+%%%%%%%%%%%%%%%%%%5
+
+%\hspace{.2\textwidth} % posicionando a minipage
+\begin{minipage}{0.69\textwidth}
+%{Área de Concentração: Controle e Automação Mecânica} % para o caso de Dissertação/Tese
+\end{minipage}
+\\
+
+\hspace{.2\textwidth} % posicionando a minipage
+\begin{minipage}{0.69\textwidth}
+%%%%%%%% ALTERE AQUI %%%%%%%%%%%%%
+{Orientador: \ORIENTADOR}\\
+%{Co-orientador: \COORIENTADOR}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{minipage}
+\vfill
+\vspace{1.5cm}
+\begin{center}
+\large{\LOCAL\\\ANO}
+\end{center}
+\end{titlepage}
+\pagebreak
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%           FICHA CATALOGRÁFICA            %%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\pagenumbering{roman} \setcounter{page}{2}
+
+% Para inserir a ficha catalográfica aqui em seu trabalho, você deve seguir os seguintes passos:
+% 1) Você deve gerar sua ficha catalográfica no endereço http://fichacatalografica.ufam.edu.br/ficha/create e salvar o arquivo em formato .pdf;
+% 2) Fazer o upload do arquivo na pasta "Imagens", do Overleaf ou da sua pasta LaTeX;
+% 3) Por o endereço da localização do arquivo que você fez upload no comando \includepdf abaixo (não se esqueça de "descomentar" o comando, tirar o %).
+% OBS: De preferência, não altere as formatações do offset deste comando.
+
+                    % Comando para Ficha catalográfica
+
+%\includepdf[pages=1,pagecommand={},offset=-2.5cm -3cm,angle=-90]{Imagens/emissaoO2CO2.pdf}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{center}
+%%%%%%%%%%%%%%%%%
+\textbf{\large{\TITULO}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\vspace*{1.5cm} % Para o Caso de mais de 3 membros na banca, mudar para {0.5cm}
+%%%%%%%%%%%%%%%%%%%%
+\normalsize{\MakeUppercase{\AUTOR}}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{center}
+\vspace*{1cm}% Para o Caso de mais de 3 membros na banca, mudar para {0.5cm}
+{\noindent Trabalho de Conclusão de Curso (TCC) apresentado à Faculdade de Tecnologia da Universidade Federal do Amazonas como parte dos requisitos necessários para obtenção do grau de Engenheiro Mecânico.}
+%{\noindent Trabalho de Conclusão de Curso apresentado à Faculdade de Tecnologia da Universidade Federal do Amazonas como parte dos requisitos necessários para obtenção do grau de Engenheira Mecânica.}
+%{\noindent Dissertação apresentada à Universidade Federal do Amazonas, no Programa de Pós-Graduação em Engenharia Mecânica, para a obtenção do título de Mestre em Engenharia Mecânica.}
+%{\noindent Tese apresentada à Universidade Federal do Amazonas, no Programa de Pós-Graduação em Engenharia Mecânica, para a obtenção do título de Doutor em Engenharia Mecânica.}
+\\[0.25cm]
+%{\noindent Área de concentração: Controle e Automação Mecânica.}\\[0.8cm] % Para dissertação/tese
+%\vspace{-.8cm}
+
+
+\noindent {Aprovado por:}
+%\noindent {Aprovada por:} %no caso de tese/dissertação/monografia de pós
+
+\vspace{.8cm}% Para o Caso de mais de 3 membros na banca, retirar isso
+\begin{flushright}
+
+{
+\begin{center}
+
+\rule{10cm}{.02cm} \\
+%%%%%%%%%%%%%%%%%%%
+{\AVALIADOR}\\ %Para o Caso de mais de 3 membros na banca, por igual ao que está no avaliador 4 e 5
+{Orientador (\LOCALAVALIADOR)} \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace{.45in}
+\vspace{1.5cm}% Para o Caso de mais de 3 membros na banca, mudar para {.45in}
+\rule{10cm}{.02cm} \\
+%%%%%%%%%%%%%%%%%%%%%
+{\AAVALIADOR}\\
+{Membro (\LOCALAAVALIADOR)} \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\vspace{.45in}
+\vspace{1.5cm}% Para o Caso de mais de 3 membros na banca, mudar para {.45in}
+\rule{10cm}{.02cm} \\
+%%%%%%%%%%%%%%%%%%%%%
+{\AAAVALIADOR}\\
+{Membro (\LOCALAAAVALIADOR)}  \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\vspace{.45in}
+
+%\rule{10cm}{.02cm} \\
+%{\AAAAVALIADOR - Membro (\LOCALAAAAVALIADOR)}  \\
+%\vspace{.45in}
+
+%\rule{10cm}{.02cm} \\
+%{\AAAAAVALIADOR - Membro (\LOCALAAAAAVALIADOR)}  \\
+%\vspace{.45in}
+
+\end{center}
+}
+\end{flushright}
+\vspace{-.5cm}
+
+\vfill
+\begin{center}
+%%%%%%%% ALTERE AQUI %%%%%%%%%%%%%
+{\LOCAL, \DATA.}%MANAUS,AM - BRASIL \\
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{center}
+\pagebreak
+
+
