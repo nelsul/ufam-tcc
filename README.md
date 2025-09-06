@@ -4,6 +4,7 @@
 
 - [Resumo (Português)](#resumo-português)
 - [Summary (English)](#summary-english)
+- [Documentação / Documentation](#documentação--documentation)
 
 ## Resumo (Português)
 
@@ -16,3 +17,17 @@ Atualmente, o processo de agendamento e registro é feito manualmente por e-mail
 This project is the Final Paper (TCC) for the Software Engineering course at the Federal University of Amazonas (UFAM), supervised by Professor Ana Carolina Oran. The system was developed to support the psychologist at the Institute of Computing (ICOMP/UFAM), streamlining the scheduling of psychological appointments, record keeping, and communication between psychologist, students, and teachers.
 
 Currently, appointments and records are managed manually via email and physical notebooks, which complicates organization and data privacy. The proposed system allows students and teachers to request appointments online, receive confirmation emails, and enables the psychologist to record session notes directly on the platform. Teachers will have access only to their own students' data, ensuring greater privacy and information security.
+
+## Documentação / Documentation
+
+### 🇧🇷 Português
+
+- [Documentação dos Templates Overleaf](./overleaf/README.md)
+- [Análise de Requisitos](./requirements_analysis/README.md)
+- [Fontes de Pesquisa](./sources/README.md)
+
+### 🇺🇸 English
+
+- [Overleaf Templates Documentation](./overleaf/README.md)
+- [Requirements Analysis](./requirements_analysis/README.md)
+- [Research Sources](./sources/README.md)

@@ -1,13 +1,13 @@
 # Sumário / Table of Contents
 
-## Português
+## 🇧🇷 Português
 
 - [Projetos Similares](#projetos-similares)
   - [1. Sistema para Gerenciamento e Agendamento de Consultas para Psicólogos e Clientes](#1-sistema-para-gerenciamento-e-agendamento-de-consultas-para-psicólogos-e-clientes)
   - [2. SystemPsi: Sistema Gerenciador para Psicólogos em Atuação Remota](#2-systempsi-sistema-gerenciador-para-psicólogos-em-atuação-remota)
   - [3. Sistema para Agendamento de Serviços](#3-sistema-para-agendamento-de-serviços)
 
-## English
+## 🇺🇸 English
 
 - [Similar Projects](#similar-projects-english-version)
   - [1. System for Management and Scheduling of Appointments for Psychologists and Clients](#1-system-for-management-and-scheduling-of-appointments-for-psychologists-and-clients)

@@ -1,11 +1,11 @@
 # Sumário / Table of Contents
 
-## Português
+## 🇧🇷 Português
 
 - [Modelo de TCC, Dissertação e Tese - Engenharia Mecânica UFAM](#1-modelo-de-tcc-dissertação-e-tese---engenharia-mecânica-ufam)
 - [SBC Conferences Template](#2-sbc-conferences-template)
 
-## English
+## 🇺🇸 English
 
 - [UFAM Mechanical Engineering Thesis/Dissertation Template](#ufam-mechanical-engineering-thesisdissertation-template)
 - [SBC Conferences Template (English)](#sbc-conferences-template-english)

@@ -1,7 +1,7 @@
 # Sumário / Table of Contents
 
-- [Requisitos em Português](#requisitos-em-português)
-- [Requirements in English](#requirements-in-english)
+- [Requisitos em 🇧🇷 Português](#requisitos-em-português)
+- [Requirements in 🇺🇸 English](#requirements-in-english)
 
 ---
 
