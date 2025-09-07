@@ -1,3 +1,36 @@
+# Sistema de Apoio Acadêmico - TCC UFAM
+
+---
+
+# Sumário
+
+- [Resumo](#resumo)
+- [Abstract](#abstract)
+- [1. Introdução](#1-introdução)
+  - [1.1 Objetivos](#11-objetivos)
+    - [1.1.1 Objetivo Geral](#111-objetivo-geral)
+    - [1.1.2 Objetivos Específicos](#112-objetivos-específicos)
+  - [1.2 Metodologia](#12-metodologia)
+  - [1.3 Organização do Trabalho](#13-organização-do-trabalho)
+- [2. Referencial Teórico](#2-referencial-teórico)
+- [3. Trabalhos Relacionados](#3-trabalhos-relacionados)
+  - [3.1 Sistema para Gerenciamento e Agendamento de Consultas para Psicólogos e Clientes](#31-sistema-para-gerenciamento-e-agendamento-de-consultas-para-psicólogos-e-clientes)
+  - [3.2 SystemPsi: Sistema Gerenciador para Psicólogos em Atuação Remota](#32-systempsi-sistema-gerenciador-para-psicólogos-em-atuação-remota)
+  - [3.3 Sistema para Agendamento de Serviços](#33-sistema-para-agendamento-de-serviços)
+- [4. Materiais e Métodos](#4-materiais-e-métodos)
+  - [4.1 Levantamento de Requisitos](#41-levantamento-de-requisitos)
+    - [4.1.1 Requisitos Funcionais (RF)](#411-requisitos-funcionais-rf)
+    - [4.1.2 Requisitos Não Funcionais (RNF)](#412-requisitos-não-funcionais-rnf)
+  - [4.2 Tecnologias utilizadas](#42-tecnologias-utilizadas)
+  - [4.3 Banco de dados](#43-banco-de-dados)
+  - [4.4 User stories e Prototipação](#44-user-stories-e-prototipação)
+- [5. Resultados](#5-resultados)
+- [6. Considerações finais](#6-considerações-finais)
+- [Referências](#referências)
+- [Apêndice](#x-apêndice)
+
+---
+
 # Resumo
 
 A crescente demanda por suporte à saúde mental no ensino superior impulsiona a busca por ferramentas tecnológicas que otimizem a gestão dos atendimentos. Visando aprimorar os serviços psicopedagógicos oferecidos na Universidade Federal do Amazonas (UFAM), este trabalho apresenta o desenvolvimento de um Sistema de Apoio Acadêmico. A plataforma web foi projetada para agregar eficiência, segurança e organização ao processo, servindo como uma evolução aos fluxos de trabalho tradicionais. A solução introduz um portal de agendamento online, onde alunos e professores podem visualizar a disponibilidade da equipe e solicitar horários de forma centralizada. Para os profissionais de psicologia, o sistema oferece um painel de gestão que simplifica a administração de consultas, além de um módulo de prontuário eletrônico para o registro seguro e sigiloso das sessões, cujos dados são protegidos por criptografia para garantir a máxima confidencialidade. Como funcionalidade de destaque, o sistema permite que observações pontuais, julgadas relevantes pelos psicólogos para o ambiente de sala de aula, sejam compartilhadas de forma segura. Cada professor pode visualizar apenas as informações pertinentes aos seus próprios alunos, o que promove uma colaboração mais integrada e com maior privacidade no acompanhamento do estudante. O projeto foi desenvolvido seguindo etapas da engenharia de software, incluindo levantamento de requisitos, modelagem de dados e implementação de uma arquitetura moderna. Como resultado, a plataforma eleva a qualidade do serviço de apoio, proporcionando maior agilidade e fortalecendo a conformidade com a Lei Geral de Proteção de Dados (LGPD), utilizando a criptografia como pilar técnico para a segurança das informações e a privacidade dos estudantes. O sistema estabelece, assim, uma ponte de comunicação ética e eficaz entre os psicólogos e o corpo docente, contribuindo para um ambiente acadêmico mais integrado e eficiente.
