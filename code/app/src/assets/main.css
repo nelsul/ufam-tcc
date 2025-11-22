@@ -1,0 +1,66 @@
+@import url("https://fonts.googleapis.com/css2?family=Varela+Round&display=swap");
+@import "tailwindcss";
+@import "./base.css";
+
+@theme {
+  --color-canvas: #fdfdf5;
+  --color-primary-text: #5e5340;
+  --color-brand-green: #78d879;
+  --color-brand-teal: #81f2dd;
+  --color-brand-orange: #f6a95b;
+  --color-brand-yellow: #fbf28f;
+  --color-soft-gray: #e9e7d8;
+
+  --font-sans: "Varela Round", sans-serif;
+
+  --animate-wiggle: wiggle 1s ease-in-out infinite;
+
+  @keyframes wiggle {
+    0%,
+    100% {
+      transform: rotate(-3deg);
+    }
+    50% {
+      transform: rotate(3deg);
+    }
+  }
+}
+
+/* Global Styles */
+body {
+  background-color: var(--color-canvas);
+  color: var(--color-primary-text);
+  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+.nook-bg {
+  background-color: #e0f7fa; /* Pastel background base */
+}
+
+.btn-nook {
+  @apply rounded-full bg-brand-teal text-white px-6 py-3 font-bold shadow-md transition-transform duration-200 hover:scale-105 active:scale-95 cursor-pointer border-4 border-white text-lg inline-flex items-center justify-center gap-2;
+}
+
+.btn-nook:hover {
+  animation: wiggle 0.5s ease-in-out;
+}
+
+.input-nook {
+  @apply rounded-2xl bg-canvas border-4 border-soft-gray px-4 py-3 text-primary-text focus:border-brand-teal focus:outline-none focus:ring-0 text-lg w-full placeholder-stone-400;
+}
+
+.card-nook {
+  @apply bg-canvas rounded-[40px] p-6 sm:p-8 shadow-xl border-4 border-dashed border-[#E9E7D8] relative;
+}
+
+.lucide {
+  color: var(--color-primary-text);
+}
+
+#app {
+  width: 100%;
+  min-height: 100vh;
+}

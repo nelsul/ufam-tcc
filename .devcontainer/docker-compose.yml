@@ -1,0 +1,22 @@
+name: ufam-tcc-devcontainer
+services:
+  main:
+    container_name: ufam-tcc-main
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - ../:/workspaces/ufam-tcc:cached
+    command: sleep infinity
+    network_mode: service:db
+
+  db:
+    container_name: ufam-tcc-db
+    image: postgres:16
+    restart: unless-stopped
+    volumes:
+      - ../code/db/data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: appdb

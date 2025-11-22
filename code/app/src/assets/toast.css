@@ -1,0 +1,48 @@
+/* Custom Toast Styling for Animal Crossing Theme */
+
+.Vue-Toastification__toast {
+  border-radius: 20px !important;
+  padding: 16px 20px !important;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+  font-weight: 600 !important;
+  box-shadow: 0 10px 25px rgba(94, 83, 64, 0.2) !important;
+  border: 3px solid white !important;
+}
+
+.Vue-Toastification__toast--success {
+  background-color: #78d879 !important;
+  color: white !important;
+}
+
+.Vue-Toastification__toast--error {
+  background-color: #f87171 !important;
+  color: white !important;
+}
+
+.Vue-Toastification__toast--info {
+  background-color: #81f2dd !important;
+  color: #5e5340 !important;
+}
+
+.Vue-Toastification__toast--warning {
+  background-color: #f6a95b !important;
+  color: white !important;
+}
+
+.Vue-Toastification__progress-bar {
+  background-color: rgba(255, 255, 255, 0.7) !important;
+}
+
+.Vue-Toastification__close-button {
+  color: white !important;
+  opacity: 0.8 !important;
+}
+
+.Vue-Toastification__close-button:hover {
+  opacity: 1 !important;
+}
+
+.Vue-Toastification__icon {
+  margin-right: 12px !important;
+}

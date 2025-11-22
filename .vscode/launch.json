@@ -1,0 +1,24 @@
+{
+    "configurations": [
+        {
+            "name": "Run App [Debug]",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/code/app",
+            "runtimeArgs": [
+                "run-script",
+                "dev"
+            ],
+            "runtimeExecutable": "npm",
+            "skipFiles": [
+                "<node_internals>/**"
+            ],
+            "type": "node"
+        },
+        {
+            "name": "Run Api [Debug]",
+            "type": "dotnet",
+            "request": "launch",
+            "projectPath": "${workspaceFolder}/code/api/src/IcompCare.Api/IcompCare.Api.csproj"
+        }
+    ]
+}
