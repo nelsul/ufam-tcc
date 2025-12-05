@@ -14,16 +14,19 @@ public class SessionService : ISessionService
     private readonly ISessionRepository _sessionRepository;
     private readonly IAppointmentRepository _appointmentRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IEncryptionService _encryptionService;
 
     public SessionService(
         ISessionRepository sessionRepository,
         IAppointmentRepository appointmentRepository,
-        IUserRepository userRepository
+        IUserRepository userRepository,
+        IEncryptionService encryptionService
     )
     {
         _sessionRepository = sessionRepository;
         _appointmentRepository = appointmentRepository;
         _userRepository = userRepository;
+        _encryptionService = encryptionService;
     }
 
     public async Task<PagedResult<SessionDto>> GetAllAsync(int pageNumber, int pageSize)
@@ -240,7 +243,7 @@ public class SessionService : ISessionService
 
         if (dto.Notes != null)
         {
-            session.Notes = dto.Notes;
+            session.Notes = _encryptionService.Encrypt(dto.Notes);
         }
 
         if (dto.Status != null)
@@ -282,7 +285,7 @@ public class SessionService : ISessionService
         await _sessionRepository.DeleteAsync(session.Id);
     }
 
-    private static SessionDto MapToDto(Session session)
+    private SessionDto MapToDto(Session session)
     {
         return new SessionDto
         {
@@ -294,7 +297,7 @@ public class SessionService : ISessionService
             StudentName = session.Student?.Name ?? string.Empty,
             StartedAt = session.StartedAt,
             EndedAt = session.EndedAt,
-            Notes = session.Notes,
+            Notes = _encryptionService.Decrypt(session.Notes),
             Status = session.Status.ToString(),
             CreatedAt = session.CreatedAt,
             UpdatedAt = session.UpdatedAt,

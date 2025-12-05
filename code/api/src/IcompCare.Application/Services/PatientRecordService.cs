@@ -13,14 +13,17 @@ public class PatientRecordService : IPatientRecordService
 {
     private readonly IPatientRecordRepository _patientRecordRepository;
     private readonly IUserRepository _userRepository;
+    private readonly IEncryptionService _encryptionService;
 
     public PatientRecordService(
         IPatientRecordRepository patientRecordRepository,
-        IUserRepository userRepository
+        IUserRepository userRepository,
+        IEncryptionService encryptionService
     )
     {
         _patientRecordRepository = patientRecordRepository;
         _userRepository = userRepository;
+        _encryptionService = encryptionService;
     }
 
     public async Task<PagedResult<PatientRecordDto>> GetAllAsync(int pageNumber, int pageSize)
@@ -75,7 +78,7 @@ public class PatientRecordService : IPatientRecordService
         var patientRecord = new PatientRecord
         {
             StudentId = student.Id,
-            Content = dto.Content,
+            Content = _encryptionService.Encrypt(dto.Content),
             Status = GeneralStatus.Active,
         };
 
@@ -97,7 +100,7 @@ public class PatientRecordService : IPatientRecordService
             );
         }
 
-        patientRecord.Content = dto.Content;
+        patientRecord.Content = _encryptionService.Encrypt(dto.Content);
 
         await _patientRecordRepository.UpdateAsync(patientRecord);
 
@@ -118,14 +121,14 @@ public class PatientRecordService : IPatientRecordService
         await _patientRecordRepository.DeleteAsync(patientRecord.Id);
     }
 
-    private static PatientRecordDto MapToDto(PatientRecord patientRecord)
+    private PatientRecordDto MapToDto(PatientRecord patientRecord)
     {
         return new PatientRecordDto
         {
             Id = patientRecord.PublicId,
             StudentId = patientRecord.Student?.PublicId ?? Guid.Empty,
             StudentName = patientRecord.Student?.Name ?? string.Empty,
-            Content = patientRecord.Content,
+            Content = _encryptionService.Decrypt(patientRecord.Content),
             CreatedAt = patientRecord.CreatedAt,
             UpdatedAt = patientRecord.UpdatedAt,
         };

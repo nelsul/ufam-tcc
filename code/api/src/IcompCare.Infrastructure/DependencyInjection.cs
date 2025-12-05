@@ -4,6 +4,7 @@ using IcompCare.Domain.Interfaces;
 using IcompCare.Infrastructure.Data;
 using IcompCare.Infrastructure.Email;
 using IcompCare.Infrastructure.Repositories;
+using IcompCare.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,6 +54,7 @@ public static class DependencyInjection
         services.AddSingleton<EmailQueueService>();
         services.AddSingleton<IEmailQueueService>(sp => sp.GetRequiredService<EmailQueueService>());
         services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+        services.AddScoped<IEncryptionService, EncryptionService>();
         services.AddHostedService<EmailBackgroundService>();
 
         return services;
