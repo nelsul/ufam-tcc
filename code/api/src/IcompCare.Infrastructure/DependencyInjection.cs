@@ -1,6 +1,8 @@
+using IcompCare.Application.Interfaces;
 using IcompCare.Domain.Enums;
 using IcompCare.Domain.Interfaces;
 using IcompCare.Infrastructure.Data;
+using IcompCare.Infrastructure.Email;
 using IcompCare.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -45,6 +47,13 @@ public static class DependencyInjection
         services.AddScoped<IObservationRepository, ObservationRepository>();
         services.AddScoped<IPatientObservationRepository, PatientObservationRepository>();
         services.AddScoped<IStudentEnrollmentRepository, StudentEnrollmentRepository>();
+
+        services.Configure<EmailSettings>(configuration.GetSection(EmailSettings.SectionName));
+        services.AddScoped<IEmailSender, SmtpEmailSender>();
+        services.AddSingleton<EmailQueueService>();
+        services.AddSingleton<IEmailQueueService>(sp => sp.GetRequiredService<EmailQueueService>());
+        services.AddScoped<IEmailTemplateService, EmailTemplateService>();
+        services.AddHostedService<EmailBackgroundService>();
 
         return services;
     }

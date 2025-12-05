@@ -1,5 +1,6 @@
 using IcompCare.Application.DTOs;
 using IcompCare.Application.DTOs.Appointments;
+using IcompCare.Application.DTOs.Email;
 using IcompCare.Application.Interfaces;
 using IcompCare.Domain.Constants;
 using IcompCare.Domain.Entities;
@@ -17,18 +18,24 @@ public class AppointmentService : IAppointmentService
     private readonly IUserRepository _userRepository;
     private readonly ISessionTypeRepository _sessionTypeRepository;
     private readonly IAvailabilityRepository _availabilityRepository;
+    private readonly IEmailQueueService _emailQueueService;
+    private readonly IEmailTemplateService _emailTemplateService;
 
     public AppointmentService(
         IAppointmentRepository appointmentRepository,
         IUserRepository userRepository,
         ISessionTypeRepository sessionTypeRepository,
-        IAvailabilityRepository availabilityRepository
+        IAvailabilityRepository availabilityRepository,
+        IEmailQueueService emailQueueService,
+        IEmailTemplateService emailTemplateService
     )
     {
         _appointmentRepository = appointmentRepository;
         _userRepository = userRepository;
         _sessionTypeRepository = sessionTypeRepository;
         _availabilityRepository = availabilityRepository;
+        _emailQueueService = emailQueueService;
+        _emailTemplateService = emailTemplateService;
     }
 
     public async Task<PagedResult<AppointmentDto>> GetAllAsync(int pageNumber, int pageSize)
@@ -100,7 +107,53 @@ public class AppointmentService : IAppointmentService
 
         appointment.Professional = professional;
 
+        SendAppointmentRequestedEmailToStudentAsync(appointment);
+
         return MapToDto(appointment);
+    }
+
+    private static readonly TimeZoneInfo ManausTimeZone = TimeZoneInfo.FindSystemTimeZoneById(
+        "America/Manaus"
+    );
+
+    private static DateTimeOffset ToManausTime(DateTimeOffset dateTime)
+    {
+        return TimeZoneInfo.ConvertTime(dateTime, ManausTimeZone);
+    }
+
+    private void SendAppointmentRequestedEmailToStudentAsync(Appointment appointment)
+    {
+        try
+        {
+            var manausTime = ToManausTime(appointment.StartTime);
+            var templateModel = new
+            {
+                StudentName = appointment.StudentFullName,
+                ProfessionalName = appointment.Professional?.FullName ?? "Profissional",
+                AppointmentDate = manausTime.ToString("dd/MM/yyyy"),
+                AppointmentTime = manausTime.ToString("HH:mm"),
+                Reason = appointment.ReasonForVisit ?? string.Empty,
+            };
+
+            var bodyContent = _emailTemplateService.RenderTemplate(
+                "StudentAppointmentRequested",
+                templateModel
+            );
+            var htmlBody = _emailTemplateService.GetBaseLayout(
+                bodyContent,
+                "Solicitação de Agendamento Recebida"
+            );
+
+            var emailMessage = new EmailMessage
+            {
+                To = appointment.StudentEmail,
+                Subject = "IcompCare - Solicitação de Agendamento Recebida",
+                HtmlBody = htmlBody,
+            };
+
+            _emailQueueService.QueueEmail(emailMessage);
+        }
+        catch { }
     }
 
     public async Task<AppointmentDto> UpdateAsync(Guid id, UpdateAppointmentDto dto)
@@ -113,6 +166,10 @@ public class AppointmentService : IAppointmentService
                 DomainErrorCodes.Appointment.NotFound
             );
         }
+
+        var previousStatus = appointment.Status;
+        var previousStartTime = appointment.StartTime;
+        var previousEndTime = appointment.EndTime;
 
         if (dto.StudentId.HasValue)
         {
@@ -264,7 +321,159 @@ public class AppointmentService : IAppointmentService
 
         await _appointmentRepository.UpdateAsync(appointment);
 
+        SendAppointmentUpdateEmailIfNeeded(
+            appointment,
+            previousStatus,
+            previousStartTime,
+            previousEndTime
+        );
+
         return MapToDto(appointment);
+    }
+
+    private void SendAppointmentUpdateEmailIfNeeded(
+        Appointment appointment,
+        AppointmentStatus previousStatus,
+        DateTimeOffset previousStartTime,
+        DateTimeOffset? previousEndTime
+    )
+    {
+        try
+        {
+            var statusChanged = appointment.Status != previousStatus;
+            var startTimeChanged = appointment.StartTime != previousStartTime;
+            var endTimeChanged = appointment.EndTime != previousEndTime;
+
+            if (
+                statusChanged
+                && previousStatus == AppointmentStatus.Pending
+                && appointment.Status == AppointmentStatus.Confirmed
+            )
+            {
+                SendAppointmentConfirmedEmail(appointment);
+            }
+            else if (statusChanged && appointment.Status == AppointmentStatus.Cancelled)
+            {
+                SendAppointmentCancelledEmail(appointment);
+            }
+            else if (
+                (startTimeChanged || endTimeChanged)
+                && appointment.Status != AppointmentStatus.Cancelled
+            )
+            {
+                SendAppointmentRescheduledEmail(appointment, previousStartTime, previousEndTime);
+            }
+        }
+        catch { }
+    }
+
+    private void SendAppointmentConfirmedEmail(Appointment appointment)
+    {
+        if (string.IsNullOrEmpty(appointment.StudentEmail))
+            return;
+
+        var manausStartTime = ToManausTime(appointment.StartTime);
+        var duration = appointment.EndTime.HasValue
+            ? (int)(appointment.EndTime.Value - appointment.StartTime).TotalMinutes
+            : MinimumAppointmentDurationMinutes;
+
+        var templateModel = new
+        {
+            PatientName = appointment.StudentFullName,
+            ProfessionalName = appointment.Professional?.FullName ?? "Profissional",
+            AppointmentDate = manausStartTime.ToString("dd/MM/yyyy"),
+            AppointmentTime = manausStartTime.ToString("HH:mm"),
+            Duration = duration.ToString(),
+        };
+
+        var bodyContent = _emailTemplateService.RenderTemplate(
+            "AppointmentConfirmed",
+            templateModel
+        );
+        var htmlBody = _emailTemplateService.GetBaseLayout(bodyContent, "Agendamento Confirmado");
+
+        var emailMessage = new EmailMessage
+        {
+            To = appointment.StudentEmail,
+            Subject = "IcompCare - Agendamento Confirmado",
+            HtmlBody = htmlBody,
+        };
+
+        _emailQueueService.QueueEmail(emailMessage);
+    }
+
+    private void SendAppointmentCancelledEmail(Appointment appointment)
+    {
+        if (string.IsNullOrEmpty(appointment.StudentEmail))
+            return;
+
+        var manausStartTime = ToManausTime(appointment.StartTime);
+
+        var templateModel = new
+        {
+            RecipientName = appointment.StudentFullName,
+            AppointmentDate = manausStartTime.ToString("dd/MM/yyyy"),
+            AppointmentTime = manausStartTime.ToString("HH:mm"),
+            CancellationReason = string.Empty,
+        };
+
+        var bodyContent = _emailTemplateService.RenderTemplate(
+            "AppointmentCancelled",
+            templateModel
+        );
+        var htmlBody = _emailTemplateService.GetBaseLayout(bodyContent, "Agendamento Cancelado");
+
+        var emailMessage = new EmailMessage
+        {
+            To = appointment.StudentEmail,
+            Subject = "IcompCare - Agendamento Cancelado",
+            HtmlBody = htmlBody,
+        };
+
+        _emailQueueService.QueueEmail(emailMessage);
+    }
+
+    private void SendAppointmentRescheduledEmail(
+        Appointment appointment,
+        DateTimeOffset previousStartTime,
+        DateTimeOffset? previousEndTime
+    )
+    {
+        if (string.IsNullOrEmpty(appointment.StudentEmail))
+            return;
+
+        var manausOldStartTime = ToManausTime(previousStartTime);
+        var manausNewStartTime = ToManausTime(appointment.StartTime);
+
+        var duration = appointment.EndTime.HasValue
+            ? (int)(appointment.EndTime.Value - appointment.StartTime).TotalMinutes
+            : MinimumAppointmentDurationMinutes;
+
+        var templateModel = new
+        {
+            PatientName = appointment.StudentFullName,
+            ProfessionalName = appointment.Professional?.FullName ?? "Profissional",
+            OldAppointmentDate = manausOldStartTime.ToString("dd/MM/yyyy"),
+            OldAppointmentTime = manausOldStartTime.ToString("HH:mm"),
+            NewAppointmentDate = manausNewStartTime.ToString("dd/MM/yyyy"),
+            NewAppointmentTime = manausNewStartTime.ToString("HH:mm"),
+            Duration = duration.ToString(),
+        };
+
+        var bodyContent = _emailTemplateService.RenderTemplate(
+            "AppointmentRescheduled",
+            templateModel
+        );
+        var htmlBody = _emailTemplateService.GetBaseLayout(bodyContent, "Agendamento Remarcado");
+
+        var emailMessage = new EmailMessage
+        {
+            To = appointment.StudentEmail,
+            Subject = "IcompCare - Agendamento Remarcado",
+            HtmlBody = htmlBody,
+        };
+
+        _emailQueueService.QueueEmail(emailMessage);
     }
 
     public async Task DeleteAsync(Guid id)
