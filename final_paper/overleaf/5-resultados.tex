@@ -1,0 +1,110 @@
+\chapter{Resultados e Discussões}
+\label{chap:resultados}
+
+Este capítulo apresenta os resultados obtidos com o desenvolvimento do Sistema de Apoio Acadêmico, demonstrando as principais funcionalidades implementadas e como elas atendem aos requisitos definidos. Serão exibidas as interfaces do sistema e discutidos os benefícios trazidos pela automação dos processos de agendamento e acompanhamento de estudantes.
+
+\section{Apresentação do Sistema}
+
+O sistema foi implantado e validado em ambiente de homologação, permitindo testar todos os fluxos de uso previstos. A interface foi projetada para ser intuitiva e responsiva, garantindo acessibilidade em diferentes dispositivos.
+
+\subsection{Autenticação e Controle de Acesso}
+
+A tela de login (Figura \ref{fig:login}) é o ponto de entrada para os usuários autenticados (profissionais, professores e administradores). O sistema utiliza autenticação via token JWT, garantindo segurança na comunicação.
+
+\begin{figure}[htb]
+    \caption{\label{fig:login}Tela de Login do Sistema}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Imagens/login-page.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+\subsection{Fluxo de Agendamento Público}
+
+Uma das principais funcionalidades do sistema é permitir que qualquer usuário visualize a disponibilidade dos profissionais e solicite um agendamento. A Figura \ref{fig:calendar} mostra a visualização do calendário público, onde os horários disponíveis são destacados.
+
+\begin{figure}[htb]
+    \caption{\label{fig:calendar}Visualização do Calendário de Disponibilidade}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Imagens/schedule-p1.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+Ao selecionar um horário, o usuário preenche um formulário com seus dados e o motivo da solicitação (Figura \ref{fig:request}). Este processo elimina a necessidade de troca de emails manuais para verificar disponibilidade.
+
+\begin{figure}[htb]
+    \caption{\label{fig:request}Formulário de Solicitação de Agendamento}
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{Imagens/schedule-p2.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+\subsection{Gestão de Agendamentos pelo Profissional}
+
+O profissional possui um painel administrativo onde pode visualizar todas as solicitações recebidas (Figura \ref{fig:dashboard}). O sistema organiza os agendamentos por status (pendente, confirmado, cancelado), facilitando o gerenciamento diário.
+
+\begin{figure}[htb]
+    \caption{\label{fig:dashboard}Painel de Gestão de Agendamentos}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{Imagens/appointments-01.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+A partir deste painel, o profissional pode confirmar ou recusar solicitações. O sistema dispara automaticamente emails de notificação para os estudantes, mantendo-os informados sobre o status de seus pedidos.
+
+\subsection{Realização de Sessões e Prontuário Eletrônico}
+
+Para os atendimentos confirmados, o sistema oferece uma interface dedicada para a realização da sessão (Figura \ref{fig:session}). O profissional pode registrar anotações em tempo real utilizando um editor de texto rico.
+
+\begin{figure}[htb]
+    \caption{\label{fig:session}Interface de Registro de Sessão}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{Imagens/sessions-01.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+Um ponto crucial é a segurança dos dados: todas as anotações salvas nesta tela são criptografadas antes de serem persistidas no banco de dados, garantindo o sigilo das informações sensíveis dos estudantes.
+
+\subsection{Área do Professor}
+
+Os professores têm acesso a uma área específica onde podem visualizar as disciplinas que lecionam e a lista de alunos matriculados (Figura \ref{fig:professor}).
+
+\begin{figure}[htb]
+    \caption{\label{fig:professor}Painel do Professor - Lista de Disciplinas}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{Imagens/professors-01.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+Ao acessar os detalhes de um aluno, o professor pode visualizar observações compartilhadas pelos profissionais de apoio (Figura \ref{fig:student-details}). Esta funcionalidade promove a integração entre o apoio psicopedagógico e o corpo docente, permitindo um acompanhamento mais holístico do estudante.
+
+\begin{figure}[htb]
+    \caption{\label{fig:student-details}Detalhes do Aluno e Observações}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{Imagens/professors-02.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+\section{Discussão dos Resultados}
+
+A implementação do sistema trouxe melhorias significativas em relação ao processo manual anterior. A seguir, discutem-se os principais ganhos observados.
+
+\subsection{Eficiência Operacional}
+
+A automação do agendamento reduziu drasticamente o tempo gasto pela profissional com a gestão de horários. Anteriormente, a confirmação de um único atendimento poderia exigir a troca de múltiplos emails. Com o sistema, o estudante visualiza a disponibilidade real e solicita o horário desejado, restando ao profissional apenas a aprovação com um clique.
+
+\subsection{Segurança da Informação}
+
+A substituição de anotações em papel ou arquivos de texto simples por um prontuário eletrônico criptografado elevou o nível de segurança e conformidade com a LGPD. O controle de acesso baseado em perfis garante que apenas pessoas autorizadas visualizem dados sensíveis.
+
+\subsection{Integração e Acompanhamento}
+
+A funcionalidade de compartilhamento de observações com professores criou um canal formal e seguro de comunicação. Isso facilita a identificação precoce de dificuldades acadêmicas e permite que os professores adaptem suas estratégias pedagógicas baseados em informações concretas fornecidas pelo apoio psicopedagógico.
+
+Em suma, o sistema atingiu os objetivos propostos, entregando uma solução robusta, segura e eficiente para o gerenciamento do apoio acadêmico no ICOMP.

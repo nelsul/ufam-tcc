@@ -1,0 +1,378 @@
+\chapter{Materiais e Métodos}
+\label{chap:materiais}
+
+Este capítulo detalha os materiais, as ferramentas e os procedimentos metodológicos empregados no desenvolvimento do Sistema de Apoio Acadêmico. Serão abordados o processo de levantamento de requisitos, as tecnologias selecionadas para a implementação e a modelagem do banco de dados que estrutura a aplicação.
+
+\section{Levantamento de Requisitos}
+
+A etapa de levantamento de requisitos foi fundamental para definir o escopo e as funcionalidades do sistema. O processo foi conduzido através de reuniões com a profissional do ICOMP, a principal interessada (stakeholder) no projeto, e com a orientação da professora Dra. Ana Carolina Oran. Nessas reuniões, foi possível mapear o fluxo de trabalho existente, identificar as limitações do método atual e especificar as necessidades dos futuros usuários (alunos, professores e a própria profissional).
+
+As funcionalidades desejadas foram então estruturadas e classificadas em duas categorias principais, conforme a prática da Engenharia de Software: Requisitos Funcionais e Requisitos Não Funcionais.
+
+\subsection{Requisitos Funcionais (RF)}
+
+Os Requisitos Funcionais descrevem as ações e funcionalidades que o sistema deve ser capaz de executar. Eles definem o comportamento do software sob a perspectiva do usuário. A Tabela \ref{tab:rf} apresenta a lista de requisitos funcionais identificados para o projeto.
+
+\begin{table}[htb]
+\centering
+\caption{Requisitos Funcionais do Sistema}
+\label{tab:rf}
+\begin{tabular}{|l|l|p{8cm}|}
+\hline
+\textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+RF001 & Autenticação & O sistema deve permitir login de usuários com email institucional e senha. \\ \hline
+RF002 & Agendamento Público & Qualquer usuário deve poder acessar a página pública de agendamento de atendimentos. \\ \hline
+RF003 & Agendamento Público & O sistema deve exibir a disponibilidade dos profissionais em formato de calendário. \\ \hline
+RF004 & Agendamento Público & O sistema deve permitir a solicitação de agendamento informando dados do estudante e motivo da visita. \\ \hline
+RF005 & Notificações & O sistema deve enviar email de confirmação quando uma solicitação for recebida. \\ \hline
+RF006 & Notificações & O sistema deve enviar email quando um agendamento for confirmado pelo profissional. \\ \hline
+RF007 & Notificações & O sistema deve enviar email quando um agendamento for cancelado. \\ \hline
+RF008 & Notificações & O sistema deve enviar email quando um agendamento for remarcado. \\ \hline
+RF009 & Gerenciamento (Profissional) & O profissional deve poder visualizar e gerenciar solicitações de agendamento. \\ \hline
+RF010 & Gerenciamento (Profissional) & O profissional deve poder confirmar, cancelar ou remarcar agendamentos. \\ \hline
+RF011 & Gerenciamento (Profissional) & O profissional deve poder configurar sua disponibilidade de horários. \\ \hline
+RF012 & Gerenciamento (Profissional) & O profissional deve poder iniciar uma sessão a partir de um agendamento confirmado. \\ \hline
+RF013 & Sessões & O profissional deve poder registrar anotações da sessão em prontuário eletrônico criptografado. \\ \hline
+RF014 & Sessões & O profissional deve poder finalizar sessões e marcar o agendamento como concluído. \\ \hline
+RF015 & Sessões & O sistema deve registrar automaticamente data/hora de início e término das sessões. \\ \hline
+RF016 & Tipos de Sessão & O sistema deve permitir cadastro de tipos de sessão com nome, duração e descrição. \\ \hline
+RF017 & Observações & O profissional deve poder cadastrar observações sobre estudantes. \\ \hline
+RF018 & Observações & O profissional deve poder categorizar observações por tipo. \\ \hline
+RF019 & Área do Professor & Professores devem poder visualizar disciplinas que lecionam organizadas por semestre. \\ \hline
+RF020 & Área do Professor & Professores devem poder visualizar alunos matriculados em suas disciplinas. \\ \hline
+RF021 & Área do Professor & Professores devem poder visualizar observações dos profissionais sobre seus alunos. \\ \hline
+RF022 & Administração & O administrador deve poder gerenciar usuários do sistema (criar, editar, ativar/desativar). \\ \hline
+RF023 & Administração & O administrador /ou profissional deve poder gerenciar semestres letivos. \\ \hline
+RF024 & Administração & O administrador /ou profissional deve poder gerenciar disciplinas. \\ \hline
+RF025 & Administração & O administrador /ou profissional deve poder vincular professores a disciplinas em semestres específicos. \\ \hline
+RF026 & Administração & O administrador /ou profissional deve poder matricular alunos em turmas. \\ \hline
+RF027 & Administração & O administrador /ou profissional deve poder gerenciar tipos de observações disponíveis no sistema. \\ \hline
+RF028 & Controle de Acesso & O sistema deve implementar perfis de usuário: Admin, Profissional, Estudante, Assistente e Professor. \\ \hline
+RF029 & Controle de Acesso & O sistema deve restringir acesso a funcionalidades baseado no perfil do usuário. \\ \hline
+\end{tabular}
+\legend{Fonte: O Autor (2025)}
+\end{table}
+
+\subsection{Requisitos Não Funcionais (RNF)}
+
+Os Requisitos Não Funcionais especificam os critérios de qualidade e as restrições operacionais do sistema. Eles não se referem a uma funcionalidade específica, mas sim a como o sistema deve operar em termos de desempenho, segurança, usabilidade, entre outros. A Tabela \ref{tab:rnf} detalha os requisitos não funcionais do projeto.
+
+\begin{table}[htb]
+\centering
+\caption{Requisitos Não Funcionais do Sistema}
+\label{tab:rnf}
+\begin{tabular}{|l|l|p{8cm}|}
+\hline
+\textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+RNF001 & Tecnologia & O sistema deve ser uma aplicação web acessível através de navegadores modernos (Chrome, Firefox, Safari, Edge). \\ \hline
+RNF002 & Arquitetura & O backend deve seguir arquitetura limpa (Clean Architecture) com separação em camadas (Domain, Application, Infrastructure). \\ \hline
+RNF003 & Tecnologia & O sistema deve utilizar .NET 8 para o backend e Vue.js 3 para o frontend. \\ \hline
+RNF004 & Banco de Dados & O sistema deve utilizar PostgreSQL como sistema gerenciador de banco de dados. \\ \hline
+RNF005 & Usabilidade & A interface da tela de solicitaçao deve ser responsiva e adaptável a dispositivos móveis, tablets e desktops. \\ \hline
+RNF006 & Segurança & O acesso ao sistema deve ser controlado por autenticação JWT (JSON Web Token). \\ \hline
+RNF007 & Segurança & As senhas dos usuários devem ser armazenadas utilizando hash. \\ \hline
+RNF008 & Segurança & Os prontuários eletrônicos devem ser armazenados de forma criptografada no banco de dados. \\ \hline
+RNF009 & Segurança & O acesso aos dados de pacientes deve ser restrito apenas aos profissionais autorizados. \\ \hline
+RNF010 & Segurança & Professores devem visualizar apenas observações de estudantes matriculados em suas disciplinas. \\ \hline
+RNF011 & Internacionalização & O sistema deve oferecer suporte a múltiplos idiomas (Português, Inglês, Espanhol). \\ \hline
+RNF012 & Confiabilidade & O sistema de envio de emails deve utilizar fila assíncrona para garantir entrega. \\ \hline
+RNF013 & Confiabilidade & O sistema de emails deve implementar retry automático em caso de falhas temporárias. \\ \hline
+RNF014 & Usabilidade & Todas as notificações por email devem ser enviadas em português brasileiro. \\ \hline
+RNF015 & Usabilidade & As datas e horários devem ser exibidas no fuso horário de Manaus (UTC-4). \\ \hline
+RNF016 & Desempenho & O sistema deve utilizar índices de banco de dados para otimizar consultas frequentes. \\ \hline
+RNF017 & Manutenibilidade & O código deve seguir padrões de nomenclatura e boas práticas de desenvolvimento. \\ \hline
+RNF018 & Manutenibilidade & Tipos de sessão e observações devem ser gerenciáveis sem alteração de código. \\ \hline
+RNF019 & Acessibilidade & A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado). \\ \hline
+RNF020 & Portabilidade & O sistema deve ser containerizável usando Docker para facilitar implantação. \\ \hline
+\end{tabular}
+\legend{Fonte: O Autor (2025)}
+\end{table}
+
+\section{Tecnologias utilizadas}
+
+A escolha das tecnologias para o desenvolvimento do Sistema de Apoio Acadêmico foi guiada por critérios de modernidade, robustez, escalabilidade e conformidade com as melhores práticas de engenharia de software. O sistema foi construído seguindo uma arquitetura cliente-servidor, com clara separação entre o frontend (interface do usuário) e o backend (lógica de negócio e acesso a dados).
+
+\subsection{Backend}
+
+O backend do sistema foi desenvolvido utilizando a plataforma \textbf{.NET 8}, a versão mais recente (Long-Term Support) do framework da Microsoft para desenvolvimento de aplicações multiplataforma. A escolha do .NET se justifica por sua performance, segurança, ampla documentação e suporte da comunidade.
+
+A estrutura do backend foi organizada seguindo os princípios da \textbf{Clean Architecture} (Arquitetura Limpa), proposta por \citeonline{martin2017}. Esta abordagem promove a separação de responsabilidades através de camadas bem definidas:
+
+\begin{itemize}
+    \item \textbf{IcompCare.Domain}: Camada de domínio que contém as entidades do negócio, enums e interfaces de repositórios. Esta camada é independente de frameworks externos e representa o núcleo da aplicação.
+    \item \textbf{IcompCare.Application}: Camada de aplicação que implementa os casos de uso do sistema através de serviços. Contém as DTOs (Data Transfer Objects) e as interfaces dos serviços.
+    \item \textbf{IcompCare.Infrastructure}: Camada de infraestrutura que implementa os detalhes técnicos, como acesso ao banco de dados através do Entity Framework Core, serviços de email e criptografia.
+    \item \textbf{IcompCare.Api}: Camada de apresentação que expõe os endpoints REST através de controllers, implementa middlewares de autenticação e tratamento de erros.
+\end{itemize}
+
+As principais bibliotecas e pacotes utilizados no backend incluem:
+
+\begin{itemize}
+    \item \textbf{Entity Framework Core 8.0.11}: ORM (Object-Relational Mapper) para mapeamento objeto-relacional e acesso ao banco de dados.
+    \item \textbf{Npgsql.EntityFrameworkCore.PostgreSQL 8.0.11}: Provider do Entity Framework para PostgreSQL.
+    \item \textbf{Microsoft.AspNetCore.Authentication.JwtBearer 8.0.2}: Implementação de autenticação via tokens JWT.
+    \item \textbf{EFCore.NamingConventions 8.0.3}: Conversão automática de nomenclatura para snake_case no banco de dados.
+    \item \textbf{System.Net.Mail}: Biblioteca nativa do .NET para envio de emails via SMTP.
+\end{itemize}
+
+\subsection{Frontend}
+
+O frontend foi desenvolvido como uma \textbf{Single Page Application (SPA)} utilizando \textbf{Vue.js 3.5.22}, um framework JavaScript progressivo e reativo. O Vue.js foi escolhido por sua curva de aprendizado suave, excelente performance e ecossistema maduro de ferramentas.
+
+A aplicação frontend utiliza \textbf{TypeScript 5.9.3} como linguagem principal, trazendo tipagem estática ao JavaScript e melhorando a manutenibilidade e robustez do código. O gerenciamento de rotas é feito através do \textbf{Vue Router 4.6.3}, permitindo navegação client-side e controle de acesso baseado em permissões.
+
+Para a estilização da interface, foi adotado o \textbf{Tailwind CSS 4.1.17}, um framework CSS utility-first que permite a construção rápida de interfaces responsivas e consistentes. O projeto utiliza o \textbf{Vite 7.1.11} como build tool e dev server, proporcionando hot module replacement (HMR) extremamente rápido durante o desenvolvimento.
+
+As principais bibliotecas complementares do frontend incluem:
+
+\begin{itemize}
+    \item \textbf{vue-i18n 11.2.1}: Sistema de internacionalização para suporte a múltiplos idiomas (português, inglês e espanhol).
+    \item \textbf{vue-toastification 2.0.0-rc.5}: Biblioteca para exibição de notificações toast ao usuário.
+    \item \textbf{lucide-vue-next 0.554.0}: Conjunto de ícones SVG otimizados e personalizáveis.
+    \item \textbf{@vueup/vue-quill 1.0.0-beta.11}: Editor de texto rico (WYSIWYG) para criação de prontuários e observações.
+\end{itemize}
+
+\subsection{Banco de Dados}
+
+O \textbf{PostgreSQL 17} foi escolhido como sistema gerenciador de banco de dados relacional. O PostgreSQL é um SGBD open-source robusto, conhecido por sua confiabilidade, conformidade com padrões SQL e recursos avançados como suporte nativo a tipos JSON, índices complexos e criptografia.
+
+A escolha do PostgreSQL também se alinha com o requisito de segurança e conformidade, uma vez que oferece recursos nativos de criptografia de dados em repouso e em trânsito, além de controle granular de permissões de acesso.
+
+\subsection{Ferramentas de Desenvolvimento}
+
+O desenvolvimento do projeto contou com o apoio de diversas ferramentas modernas:
+
+\begin{itemize}
+    \item \textbf{Git}: Sistema de controle de versão distribuído para rastreamento de mudanças no código.
+    \item \textbf{Docker}: Plataforma de containerização utilizada para facilitar a implantação e garantir consistência entre ambientes de desenvolvimento e produção.
+    \item \textbf{ESLint e Prettier}: Ferramentas de linting e formatação de código para manter a qualidade e consistência do código TypeScript/JavaScript.
+    \item \textbf{Swagger/OpenAPI}: Documentação automática da API REST, facilitando o consumo dos endpoints pelo frontend.
+\end{itemize}
+
+Esta pilha tecnológica moderna e bem estabelecida no mercado garante que o sistema seja mantível, escalável e alinhado com as melhores práticas da indústria de desenvolvimento de software.
+
+\section{Banco de Dados}
+
+\begin{figure}[htb]
+    \caption{\label{fig:db-schema}Esquema do Banco de Dados}
+    \begin{center}
+        \includegraphics[width=0.8\textwidth]{Imagens/icompcare-db-schema.png}
+    \end{center}
+    \legend{Fonte: O Autor (2025)}
+\end{figure}
+
+A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois define como as informações são estruturadas, armazenadas e relacionadas. O banco de dados foi projetado seguindo os princípios de normalização, garantindo a integridade referencial e minimizando redundâncias.
+
+\subsection{Modelo Entidade-Relacionamento}
+
+O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recursos avançados como tipos de dados customizados (ENUMs), triggers, funções e índices otimizados. A estrutura do banco de dados foi organizada em tabelas que representam as principais entidades do domínio do problema.
+
+\textbf{Entidades Principais:}
+
+\begin{enumerate}
+    \item \textbf{users (Usuários)}: Armazena todos os usuários do sistema, independente do perfil (Admin, Profissional, Estudante, Assistente, Professor). Contém dados de identificação, credenciais de acesso e status da conta. A coluna \texttt{role} define o tipo de perfil através de um ENUM, permitindo controle de acesso granular.
+
+    \item \textbf{availabilities (Disponibilidades)}: Registra os períodos de disponibilidade configurados pelos profissionais. Cada registro possui horário de início e fim, permitindo que o sistema exiba ao público apenas os horários em que o profissional está disponível para atendimento.
+
+    \item \textbf{appointments (Agendamentos)}: Representa as solicitações de atendimento. Armazena informações do estudante (mesmo que não cadastrado no sistema), do profissional, horários e status do agendamento. O status é controlado por um ENUM com os valores: \texttt{pending} (pendente), \texttt{confirmed} (confirmado), \texttt{in\_session} (em sessão), \texttt{cancelled} (cancelado) e \texttt{completed} (concluído).
+
+    \item \textbf{sessions (Sessões)}: Registra as sessões de atendimento efetivamente realizadas. Está vinculada a um agendamento confirmado e armazena horário de início, término e anotações do profissional. As anotações são armazenadas de forma criptografada para garantir sigilo.
+
+    \item \textbf{session\_types (Tipos de Sessão)}: Tabela de configuração que define os tipos de atendimento disponíveis (ex: "Primeira Consulta", "Retorno", "Orientação"). Cada tipo possui nome, descrição e duração padrão em minutos.
+
+    \item \textbf{patient\_records (Prontuários)}: Armazena os prontuários eletrônicos dos estudantes. O conteúdo é criptografado, garantindo que apenas profissionais autorizados possam acessar informações sensíveis.
+
+    \item \textbf{observations (Tipos de Observação)}: Tabela de configuração que categoriza os tipos de observações que podem ser feitas sobre estudantes (ex: "Dificuldade de Concentração", "Necessita Acompanhamento").
+
+    \item \textbf{patient\_observations (Observações de Pacientes)}: Registra observações específicas feitas por profissionais sobre estudantes. Estas observações podem ser compartilhadas de forma controlada com professores que lecionam para o estudante em questão.
+
+    \item \textbf{semesters (Semestres)}: Representa os períodos letivos, com datas de início e fim. Permite organizar ofertas de disciplinas por período acadêmico.
+
+    \item \textbf{subjects (Disciplinas)}: Cadastro das disciplinas oferecidas pela instituição, contendo código, nome e descrição.
+
+    \item \textbf{subject\_offerings (Ofertas de Disciplinas)}: Vincula disciplinas a semestres e professores, representando uma turma específica sendo oferecida em um período letivo.
+
+    \item \textbf{student\_enrollments (Matrículas)}: Registra as matrículas dos estudantes nas turmas. Esta tabela é crucial para o controle de acesso dos professores às observações, pois um professor só pode visualizar informações de estudantes matriculados em suas turmas.
+\end{enumerate}
+
+\subsection{Estratégias de Segurança e Integridade}
+
+O banco de dados implementa diversas estratégias para garantir segurança e integridade:
+
+\textbf{Integridade Referencial}: Todas as relações entre tabelas são garantidas através de chaves estrangeiras (FOREIGN KEY), impedindo inconsistências como referências a registros inexistentes.
+
+\textbf{Identificadores Públicos}: Cada tabela possui dois tipos de identificadores:
+
+\begin{itemize}
+    \item \texttt{id}: Chave primária sequencial interna (BIGINT), utilizada para otimização de índices e joins.
+    \item \texttt{public\_id}: UUID público exposto pela API, impedindo enumeração de registros e aumentando a segurança.
+\end{itemize}
+
+\textbf{Tipos Enumerados (ENUMs)}: Status e perfis de usuário são implementados como ENUMs nativos do PostgreSQL (ex: \texttt{user\_role\_enum}, \texttt{appointment\_status\_enum}), garantindo que apenas valores válidos sejam armazenados e facilitando queries.
+
+\textbf{Triggers de Atualização}: Um trigger \texttt{update\_modified\_column()} é aplicado a todas as tabelas, atualizando automaticamente o campo \texttt{updated\_at} sempre que um registro é modificado, permitindo auditoria de alterações.
+
+\textbf{Índices Otimizados}: O banco possui índices estratégicos em campos frequentemente utilizados em consultas:
+
+\begin{itemize}
+    \item Índices em chaves estrangeiras para otimizar joins
+    \item Índices compostos em \texttt{(start\_time, end\_time)} para consultas de disponibilidade e agendamentos
+    \item Índices em campos de busca como \texttt{student\_id}, \texttt{professional\_id}, \texttt{semester\_id}
+\end{itemize}
+
+\textbf{Constraints de Validação}: O banco implementa validações a nível de dados:
+
+\begin{itemize}
+    \item CHECK constraints para garantir que datas de término sejam posteriores às datas de início
+    \item CHECK constraints para validar formato de emails (presença de @)
+    \item UNIQUE constraints para prevenir duplicação de dados críticos
+\end{itemize}
+
+\textbf{Criptografia}: Embora a criptografia dos prontuários seja implementada na camada de aplicação (antes de persistir no banco), o PostgreSQL oferece suporte adicional para criptografia de dados em repouso através de extensões como pgcrypto, caso necessário no futuro.
+
+Esta modelagem robusta e bem estruturada garante que o sistema seja escalável, mantível e seguro, atendendo aos requisitos funcionais e não funcionais especificados, especialmente no que tange à proteção de dados sensíveis.
+
+\section{User Stories}
+
+As user stories foram desenvolvidas para detalhar os requisitos funcionais do sistema de forma compreensível para os stakeholders e para orientar o desenvolvimento. Cada user story segue o formato proposto por \citeonline{cohn2004}, descrevendo uma funcionalidade do ponto de vista do usuário final, com critérios de aceitação bem definidos.
+
+\subsection{User Stories Principais}
+
+\textbf{US001 - Autenticação no Sistema}
+
+Como um usuário do sistema (profissional ou professor), eu gostaria de fazer login com meu email institucional e senha para acessar as funcionalidades disponíveis para meu perfil.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O sistema deve exibir um formulário de login com campos de email e senha
+    \item Credenciais inválidas devem retornar uma mensagem de erro clara
+    \item Após login bem-sucedido, um token JWT deve ser gerado e armazenado
+    \item O token deve expirar após um período determinado de inatividade
+    \item O usuário deve poder fazer logout, invalidando seu token
+\end{itemize}
+
+\textbf{US002 - Agendar Atendimento (Visitante)}
+
+Como um visitante não autenticado, eu gostaria de visualizar a disponibilidade dos profissionais e solicitar um agendamento fornecendo meus dados básicos (nome, matrícula, email).
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item A página pública de agendamento deve estar acessível sem login
+    \item O calendário deve exibir apenas horários com disponibilidade confirmada
+    \item O formulário deve aceitar dados do solicitante e do estudante
+    \item Após submeter, o sistema deve gerar um agendamento com status "pendente"
+    \item Um email de confirmação deve ser enviado imediatamente
+\end{itemize}
+
+\textbf{US003 - Gerenciar Agendamentos (Profissional)}
+
+Como um profissional, eu gostaria de visualizar todas as solicitações de agendamento pendentes e poder confirmá-las ou cancelá-las.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O painel deve listar agendamentos organizados por status
+    \item Cada agendamento deve exibir: nome do estudante, data/hora solicitada, motivo da visita
+    \item Ao confirmar, um email de confirmação deve ser enviado ao estudante
+    \item Ao cancelar, o profissional deve poder remarcar para outra data
+    \item O sistema deve validar conflitos de horários antes de confirmar
+\end{itemize}
+
+\textbf{US004 - Iniciar Sessão de Atendimento}
+
+Como um profissional, eu gostaria de iniciar uma sessão a partir de um agendamento confirmado para registrar as anotações do atendimento.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O botão de iniciar sessão deve estar disponível apenas para agendamentos confirmados
+    \item Ao iniciar, a data/hora de início deve ser registrada automaticamente
+    \item O sistema deve impedir que o profissional inicie múltiplas sessões simultaneamente
+    \item Um editor de texto rico deve estar disponível para registrar anotações
+    \item Ao finalizar, a data/hora de término deve ser registrada automaticamente
+\end{itemize}
+
+\textbf{US005 - Configurar Disponibilidade}
+
+Como um profissional, eu gostaria de definir meus horários de disponibilidade para que os estudantes possam visualizar quando posso atender.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O sistema deve permitir cadastrar períodos de disponibilidade com hora de início e fim
+    \item Deve ser possível configurar múltiplos períodos (ex: segunda a sexta de 8h às 12h)
+    \item Disponibilidades que já possuem agendamentos não devem poder ser removidas
+    \item O calendário público deve refletir as alterações em tempo real
+    \item As disponibilidades devem ser exibidas no fuso horário de Manaus (UTC-4)
+\end{itemize}
+
+\textbf{US006 - Visualizar Disciplinas e Alunos (Professor)}
+
+Como um professor, eu gostaria de visualizar as disciplinas que leciono neste semestre e os alunos matriculados em cada uma delas.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O painel do professor deve listar disciplinas organizadas por semestre
+    \item Ao clicar em uma disciplina, deve exibir a lista completa de alunos
+    \item O sistema deve permitir visualizar dados básicos de cada aluno (nome, matrícula)
+    \item Os dados devem estar sincronizados com as matrículas registradas no sistema
+\end{itemize}
+
+\textbf{US007 - Visualizar Observações de Alunos}
+
+Como um professor, eu gostaria de visualizar as observações registradas pelos profissionais sobre meus alunos para acompanhar melhor seu desenvolvimento.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item As observações devem estar disponíveis na visualização de detalhes do aluno
+    \item Apenas observações de alunos matriculados nas disciplinas do professor devem ser visíveis
+    \item Cada observação deve exibir: data, tipo, descrição e profissional que a registrou
+    \item O professor não deve ter permissão para editar ou deletar observações
+    \item As observações devem estar categorizadas por tipo
+\end{itemize}
+
+\textbf{US008 - Gerenciar Usuários (Administrador/Profissional)}
+
+Como um administrador do sistema, eu gostaria de criar, editar e desativar contas de usuários, além de atribuir perfis apropriados.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O painel de administração deve permitir buscar usuários por nome ou email
+    \item Ao criar um novo usuário, uma senha temporária deve ser gerada
+    \item O sistema deve permitir alterar o perfil de um usuário existente
+    \item Usuários desativados não devem conseguir fazer login
+    \item Todas as ações de alteração devem ser registradas com data/hora
+\end{itemize}
+
+\textbf{US009 - Gerenciar Semestres e Disciplinas (Administrador/Profissional)}
+
+Como um administrador, eu gostaria de cadastrar semestres letivos, disciplinas e vincular professores a disciplinas para estruturar a oferta acadêmica.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O sistema deve permitir criar semestres com datas de início e fim
+    \item Disciplinas devem ter código único, nome e descrição
+    \item A vinculação professor-disciplina-semestre deve estar clara e organizável
+    \item O sistema deve impedir datas inválidas (fim anterior ao início)
+    \item Deve ser possível visualizar histórico de ofertas anteriores
+\end{itemize}
+
+\textbf{US010 - Notificação de Agendamento Confirmado}
+
+Como um estudante, eu gostaria de receber um email confirmando que meu agendamento foi aceito pelo profissional.
+
+\textbf{Critérios de Aceitação:}
+
+\begin{itemize}
+    \item O email deve ser enviado em português brasileiro
+    \item Deve conter: nome do profissional, data/hora confirmada, local/modo de atendimento
+    \item O email deve incluir instruções sobre como preparar-se para a sessão
+    \item O email deve ser enviado dentro de 5 minutos após confirmação
+    \item Deve haver mecanismo de retry caso o envio falhe inicialmente
+\end{itemize}
