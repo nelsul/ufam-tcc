@@ -108,4 +108,3 @@ node_modules/
 *.log
 *.fdb_latexmk
 *.synctex.gz
-*.pdf

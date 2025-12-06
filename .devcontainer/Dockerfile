@@ -12,6 +12,13 @@ RUN apk add --no-cache \
     sudo \
     shadow
 
+# Install LaTeX support
+# texlive-full provides a complete TeX environment
+# biber is for bibliography management
+RUN apk add --no-cache \
+    texlive-full \
+    biber
+
 # Create a non-root user 'vscode' with sudo access
 # This is standard for Dev Containers to avoid running as root
 RUN addgroup -g 1000 vscode \

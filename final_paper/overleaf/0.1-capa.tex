@@ -1,29 +1,40 @@
 \begin{titlepage}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\hspace*{-0.1\textwidth}
-\begin{tabular}{ccc}
-\multirow{3}{*}{\includegraphics[height=1.8cm]{Imagens/brasaocor2.jpg}} & UNIVERSIDADE FEDERAL DO AMAZONAS & \multirow{3}{*}{\ \includegraphics[height=1.8cm]{Imagens/novo_logo_reduzido.png}} \\
- & INSTITUTO DE COMPUTAÇÃO & \\
- & CURSO DE CIÊNCIA DA COMPUTAÇÃO & 
-\end{tabular}
-\hspace*{-0.05\textwidth}
-\rule{15.5cm}{.02cm} \\
+% 1. Remove paragraph indentation so it starts flush left
+\noindent 
+% 2. Left Logo Box (Centered Vertically [c])
+\begin{minipage}[c]{0.15\textwidth}
+    \flushleft
+    \includegraphics[height=1.8cm]{Imagens/brasaocor2.jpg}
+\end{minipage}%
+% 3. Center Text Box (Centered Vertically [c])
+\begin{minipage}[c]{0.70\textwidth}
+    \centering
+    % Optional: You can change font size here if needed, e.g., \large
+    UNIVERSIDADE FEDERAL DO AMAZONAS \\
+    INSTITUTO DE COMPUTAÇÃO \\
+    CURSO DE ENGENHARIA DE SOFTWARE
+\end{minipage}%
+% 4. Right Logo Box (Centered Vertically [c])
+\begin{minipage}[c]{0.15\textwidth}
+    \flushright
+    \includegraphics[height=1.6cm]{Imagens/novo_logo_reduzido.png}
+\end{minipage}
+
+% 5. The horizontal rule
+\vspace{0.2cm} % Space between logos and line
+\noindent\rule{\textwidth}{.02cm} 
+
 \begin{center}
-\vspace{5cm}
-%%%%%%%% %%%%%%%%%%%%%
-\normalsize{\MakeUppercase{\AUTOR}}\\ 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vspace{3.5cm}
-%%%%%%%% ALTERE AQUI %%%%%%%%%%%%%
-\large{\textbf{\TITULO}}\\ %altere
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\vfill%\vspace{9cm}
-%vvvvvvvvv ALTERE AQUI vvvvvvvv%%%
-\large{\LOCAL\\ \ANO}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    \vspace{5cm}
+    \normalsize{\MakeUppercase{\AUTOR}}\\ 
+    
+    \vspace{3.5cm}
+    \large{\textbf{\TITULO}}\\
+    \normalsize{\SUBTITULO}\\
+    
+    \vfill
+    \large{\LOCAL\\ \ANO}
 \end{center}
+
 \end{titlepage}
-
-
-%7+5+5.5

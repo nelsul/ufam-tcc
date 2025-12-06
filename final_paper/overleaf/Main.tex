@@ -1,4 +1,4 @@
-% Template para Trabalhos Acadêmicos do Curso de Engenharia Mecânica da Universidade Federal do Amazonas
+% Template para Trabalhos Acadêmicos do Curso de Engenharia de Software da Universidade Federal do Amazonas
 % Criado por Gustavo Neto (gustavoneto@ufam.edu.br), 2020.
 % Versão 1.1 - 27/06/2022
 
@@ -24,12 +24,14 @@
 %% Alterar sempre no segundo campo (chaves) com suas informações  %%        
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand{\TITULO}{Sistema de Apoio Acadêmico: Uma Abordagem Segura e Integrada para Gestão de Atendimentos no ICOMP/UFAM}
-\newcommand{\AUTOR}{Nome do Aluno}
+\newcommand{\TITULO}{Sistema de Apoio Acadêmico: IcompCare}
+\newcommand{\SUBTITULO}{Uma Abordagem Segura e Integrada para Gestão de Atendimentos no ICOMP/UFAM}
+\newcommand{\AUTOR}{Nelson Pereira de Carvalho Neto}
 \newcommand{\ORIENTADOR}{Profa. Dra. Ana Carolina Oran}
 
-\newcommand{\TITLE}{Academic Support System: A Secure and Integrated Approach for Service Management at ICOMP/UFAM}
-\newcommand{\CITACAOAUTOR}{SOBRENOME, Nome}
+\newcommand{\TITLE}{Academic Support System: IcompCare}
+\newcommand{\SUBTITLE}{A Secure and Integrated Approach for Service Management at ICOMP/UFAM}
+\newcommand{\CITACAOAUTOR}{CARVALHO NETO, Nelson Pereira de}
 
 %\newcommand{\COORIENTADOR}{Insira o nome de seu Co-orientador aqui} %Se habilitar, verificar 0.2-folha de rosto (linha 44)
 \newcommand{\LOCAL}{Manaus-AM} %local em que o trabalho foi redigido
@@ -40,7 +42,7 @@
 
 %%%%% Informações sobre os membros da banca
 \newcommand{\AVALIADOR}{Prof. Dr. Gustavo Neto}
-\newcommand{\LOCALAVALIADOR}{DEMEC/UFAM}
+\newcommand{\LOCALAVALIADOR}{ICOMP/UFAM}
 \newcommand{\AAVALIADOR}{Prof. Dr. Avaliador 2}
 \newcommand{\LOCALAAVALIADOR}{Sigla da Instituição 2}
 \newcommand{\AAAVALIADOR}{Prof. Dr. Avaliador 3}
@@ -70,14 +72,6 @@
 %%%%%%%%%%%%             ITENS PRÉ-TEXTUAIS           %%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%Dedicatória
-\paginadedicatoria{\input{0.3-dedicatoria}} %opcional
-
-%Agradecimentos
-\begin{agradecimentos}
-   \input{0.4-agradecimentos_epigrafe} %opcional
-\end{agradecimentos}
-
 %Resumo
 \begin{resumo}
     \input{0.5-resumo} %obrigatório
@@ -87,6 +81,9 @@
 \begin{abstract}
    \input{0.6-abstract} %obrigatório
 \end{abstract}
+
+%Lista de Siglas
+\input{0.7-siglas}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -109,12 +106,6 @@
 \listoftables%  opcional, caso não desejar, comentar (ou seja, por "%" na frente da linha) também nas 3 linhas anteriores a essa.
 }
  %opcional
-
-%Lista de Siglas
-\input{0.7-siglas} %opcional
-
-%Lista de Símbolos
-\input{0.8-simbolos} %opcional
 
 
 
@@ -171,7 +162,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%        BIBLIOGRAFIA     %%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\bibliography{Bibliografia.bib}
+\bibliography{Bibliografia}
 
 
 \input{6-apendice}

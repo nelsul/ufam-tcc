@@ -598,13 +598,13 @@ Para mais informacoes, leia o manual da classe.\MessageBreak%
   }%
 
 %%%%   HORIZONTAL LENGHTS   %%%%
-% The left margin is 4cm, and the right margin equals to 2.5cm. % Paulo Barreto
-\setlength{\oddsidemargin}{4cm-\hoffset-1in} % Paulo Barreto
+% The left margin is 3cm, and the right margin equals to 2cm. % Adjusted margins
+\setlength{\oddsidemargin}{3cm-\hoffset-1in} % Adjusted from 4cm to 3cm
 % for compatibility with twoside print, the length of the margins must
 % be exchanged.
-\setlength{\evensidemargin}{2.5cm-\hoffset-1in} % Paulo Barreto
-% \paperwidth=\textwidth+\oddsidemargin+\hoffset+1in+2.5cm % Paulo Barreto
-\setlength{\textwidth}{\paperwidth-\oddsidemargin-\hoffset-1in-2.5cm} % Paulo Barreto
+\setlength{\evensidemargin}{2cm-\hoffset-1in} % Adjusted from 2.5cm to 2cm
+% \paperwidth=\textwidth+\oddsidemargin+\hoffset+1in+2cm % Adjusted
+\setlength{\textwidth}{\paperwidth-\oddsidemargin-\hoffset-1in-2cm} % Adjusted from 2.5cm to 2cm
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -1904,7 +1904,7 @@ Para mais informacoes, leia o manual da classe.\MessageBreak%
     Texto apresentado à Faculdade de Tecnologia
     da Universidade do Amazonas como requisito 
     para a conclusão do curso de
-    graduação em Engenharia Mecânica,
+    graduação em Engenharia de Software,
     junto ao \FTDepartamentoData.}%
 }
 
@@ -1914,7 +1914,7 @@ Para mais informacoes, leia o manual da classe.\MessageBreak%
     Texto apresentado à Faculdade de Tecnologia
     da Universidade Federal do Amazonas como requisito
     para obtenção do Título de Especialista em 
-    Engenharia Mecânica}%
+    Engenharia de Software}%
 }
 
 \newcommand{\qualificacaoMSc}[1]{%

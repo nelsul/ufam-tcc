@@ -50,7 +50,7 @@ RF027 & Administração & O administrador /ou profissional deve poder gerenciar 
 RF028 & Controle de Acesso & O sistema deve implementar perfis de usuário: Admin, Profissional, Estudante, Assistente e Professor. \\ \hline
 RF029 & Controle de Acesso & O sistema deve restringir acesso a funcionalidades baseado no perfil do usuário. \\ \hline
 \end{tabular}
-\legend{Fonte: O Autor (2025)}
+\legend{O Autor (2025)}
 \end{table}
 
 \subsection{Requisitos Não Funcionais (RNF)}
@@ -85,7 +85,7 @@ RNF018 & Manutenibilidade & Tipos de sessão e observações devem ser gerenciá
 RNF019 & Acessibilidade & A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado). \\ \hline
 RNF020 & Portabilidade & O sistema deve ser containerizável usando Docker para facilitar implantação. \\ \hline
 \end{tabular}
-\legend{Fonte: O Autor (2025)}
+\legend{O Autor (2025)}
 \end{table}
 
 \section{Tecnologias utilizadas}
@@ -94,7 +94,7 @@ A escolha das tecnologias para o desenvolvimento do Sistema de Apoio Acadêmico 
 
 \subsection{Backend}
 
-O backend do sistema foi desenvolvido utilizando a plataforma \textbf{.NET 8}, a versão mais recente (Long-Term Support) do framework da Microsoft para desenvolvimento de aplicações multiplataforma. A escolha do .NET se justifica por sua performance, segurança, ampla documentação e suporte da comunidade.
+O backend do sistema foi desenvolvido utilizando a plataforma \textbf{.NET 8} \cite{aspnetcore}, a versão mais recente (Long-Term Support) do framework da Microsoft para desenvolvimento de aplicações multiplataforma. A escolha do .NET se justifica por sua performance, segurança, ampla documentação e suporte da comunidade.
 
 A estrutura do backend foi organizada seguindo os princípios da \textbf{Clean Architecture} (Arquitetura Limpa), proposta por \citeonline{martin2017}. Esta abordagem promove a separação de responsabilidades através de camadas bem definidas:
 
@@ -111,13 +111,13 @@ As principais bibliotecas e pacotes utilizados no backend incluem:
     \item \textbf{Entity Framework Core 8.0.11}: ORM (Object-Relational Mapper) para mapeamento objeto-relacional e acesso ao banco de dados.
     \item \textbf{Npgsql.EntityFrameworkCore.PostgreSQL 8.0.11}: Provider do Entity Framework para PostgreSQL.
     \item \textbf{Microsoft.AspNetCore.Authentication.JwtBearer 8.0.2}: Implementação de autenticação via tokens JWT.
-    \item \textbf{EFCore.NamingConventions 8.0.3}: Conversão automática de nomenclatura para snake_case no banco de dados.
+    \item \textbf{EFCore.NamingConventions 8.0.3}: Conversão automática de nomenclatura para snake\_case no banco de dados.
     \item \textbf{System.Net.Mail}: Biblioteca nativa do .NET para envio de emails via SMTP.
 \end{itemize}
 
 \subsection{Frontend}
 
-O frontend foi desenvolvido como uma \textbf{Single Page Application (SPA)} utilizando \textbf{Vue.js 3.5.22}, um framework JavaScript progressivo e reativo. O Vue.js foi escolhido por sua curva de aprendizado suave, excelente performance e ecossistema maduro de ferramentas.
+O frontend foi desenvolvido como uma \textbf{Single Page Application (SPA)} utilizando \textbf{Vue.js 3.5.22} \cite{vuejs}, um framework JavaScript progressivo e reativo. O Vue.js foi escolhido por sua curva de aprendizado suave, excelente performance e ecossistema maduro de ferramentas.
 
 A aplicação frontend utiliza \textbf{TypeScript 5.9.3} como linguagem principal, trazendo tipagem estática ao JavaScript e melhorando a manutenibilidade e robustez do código. O gerenciamento de rotas é feito através do \textbf{Vue Router 4.6.3}, permitindo navegação client-side e controle de acesso baseado em permissões.
 
@@ -134,7 +134,7 @@ As principais bibliotecas complementares do frontend incluem:
 
 \subsection{Banco de Dados}
 
-O \textbf{PostgreSQL 17} foi escolhido como sistema gerenciador de banco de dados relacional. O PostgreSQL é um SGBD open-source robusto, conhecido por sua confiabilidade, conformidade com padrões SQL e recursos avançados como suporte nativo a tipos JSON, índices complexos e criptografia.
+O \textbf{PostgreSQL 17} \cite{postgresql} foi escolhido como sistema gerenciador de banco de dados relacional. O PostgreSQL é um SGBD open-source robusto, conhecido por sua confiabilidade, conformidade com padrões SQL e recursos avançados como suporte nativo a tipos JSON, índices complexos e criptografia.
 
 A escolha do PostgreSQL também se alinha com o requisito de segurança e conformidade, uma vez que oferece recursos nativos de criptografia de dados em repouso e em trânsito, além de controle granular de permissões de acesso.
 
@@ -153,15 +153,15 @@ Esta pilha tecnológica moderna e bem estabelecida no mercado garante que o sist
 
 \section{Banco de Dados}
 
+A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois define como as informações são estruturadas, armazenadas e relacionadas. O banco de dados foi projetado seguindo os princípios de normalização, garantindo a integridade referencial e minimizando redundâncias. O esquema completo do banco de dados está apresentado na Figura \ref{fig:db-schema}.
+
 \begin{figure}[htb]
     \caption{\label{fig:db-schema}Esquema do Banco de Dados}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/icompcare-db-schema.png}
+        \includegraphics[width=\textwidth]{Imagens/icompcare-db-schema.png}
     \end{center}
-    \legend{Fonte: O Autor (2025)}
+    \legend{O Autor (2025)}
 \end{figure}
-
-A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois define como as informações são estruturadas, armazenadas e relacionadas. O banco de dados foi projetado seguindo os princípios de normalização, garantindo a integridade referencial e minimizando redundâncias.
 
 \subsection{Modelo Entidade-Relacionamento}
 

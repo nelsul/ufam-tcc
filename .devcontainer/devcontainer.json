@@ -12,7 +12,8 @@
 				"csharpier.csharpier-vscode",
 				"Vue.volar",
 				"esbenp.prettier-vscode",
-				"dbaeumer.vscode-eslint"
+				"dbaeumer.vscode-eslint",
+				"James-Yu.latex-workshop"
 			]
 		}
 	},
