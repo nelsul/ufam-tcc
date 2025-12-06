@@ -598,13 +598,13 @@ Para mais informacoes, leia o manual da classe.\MessageBreak%
   }%
 
 %%%%   HORIZONTAL LENGHTS   %%%%
-% The left margin is 3cm, and the right margin equals to 2cm. % Adjusted margins
-\setlength{\oddsidemargin}{3cm-\hoffset-1in} % Adjusted from 4cm to 3cm
+% The left margin is 2.5cm, and the right margin equals to 2.5cm. % Centered margins
+\setlength{\oddsidemargin}{2.5cm-\hoffset-1in} % Adjusted from 3cm to 2.5cm
 % for compatibility with twoside print, the length of the margins must
 % be exchanged.
-\setlength{\evensidemargin}{2cm-\hoffset-1in} % Adjusted from 2.5cm to 2cm
-% \paperwidth=\textwidth+\oddsidemargin+\hoffset+1in+2cm % Adjusted
-\setlength{\textwidth}{\paperwidth-\oddsidemargin-\hoffset-1in-2cm} % Adjusted from 2.5cm to 2cm
+\setlength{\evensidemargin}{2.5cm-\hoffset-1in} % Adjusted to 2.5cm
+% \paperwidth=\textwidth+\oddsidemargin+\hoffset+1in+2.5cm % Adjusted
+\setlength{\textwidth}{\paperwidth-\oddsidemargin-\hoffset-1in-2.5cm} % Adjusted to 2.5cm
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
