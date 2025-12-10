@@ -13,13 +13,22 @@ As funcionalidades desejadas foram então estruturadas e classificadas em duas c
 
 Os Requisitos Funcionais descrevem as ações e funcionalidades que o sistema deve ser capaz de executar. Eles definem o comportamento do software sob a perspectiva do usuário. A Tabela \ref{tab:rf} apresenta a lista de requisitos funcionais identificados para o projeto.
 
-\begin{table}[htb]
-\centering
+{\small
+\begin{longtable}{|l|l|p{7.5cm}|}
 \caption{Requisitos Funcionais do Sistema}
-\label{tab:rf}
-\begin{tabular}{|l|l|p{8cm}|}
+\label{tab:rf}\\
 \hline
 \textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+\endfirsthead
+\caption[]{Requisitos Funcionais do Sistema (continuação)}\\
+\hline
+\textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{r}{\textit{Fonte: O Autor (2025)}}
+\endlastfoot
 RF001 & Autenticação & O sistema deve permitir login de usuários com email institucional e senha. \\ \hline
 RF002 & Agendamento Público & Qualquer usuário deve poder acessar a página pública de agendamento de atendimentos. \\ \hline
 RF003 & Agendamento Público & O sistema deve exibir a disponibilidade dos profissionais em formato de calendário. \\ \hline
@@ -49,21 +58,29 @@ RF026 & Administração & O administrador /ou profissional deve poder matricular
 RF027 & Administração & O administrador /ou profissional deve poder gerenciar tipos de observações disponíveis no sistema. \\ \hline
 RF028 & Controle de Acesso & O sistema deve implementar perfis de usuário: Admin, Profissional, Estudante, Assistente e Professor. \\ \hline
 RF029 & Controle de Acesso & O sistema deve restringir acesso a funcionalidades baseado no perfil do usuário. \\ \hline
-\end{tabular}
-\legend{O Autor (2025)}
-\end{table}
+\end{longtable}
+}
 
 \subsection{Requisitos Não Funcionais (RNF)}
 
 Os Requisitos Não Funcionais especificam os critérios de qualidade e as restrições operacionais do sistema. Eles não se referem a uma funcionalidade específica, mas sim a como o sistema deve operar em termos de desempenho, segurança, usabilidade, entre outros. A Tabela \ref{tab:rnf} detalha os requisitos não funcionais do projeto.
 
-\begin{table}[htb]
-\centering
+{\small
+\begin{longtable}{|l|l|p{7.5cm}|}
 \caption{Requisitos Não Funcionais do Sistema}
-\label{tab:rnf}
-\begin{tabular}{|l|l|p{8cm}|}
+\label{tab:rnf}\\
 \hline
 \textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+\endfirsthead
+\caption[]{Requisitos Não Funcionais do Sistema (continuação)}\\
+\hline
+\textbf{ID} & \textbf{Categoria} & \textbf{Descrição} \\ \hline
+\endhead
+\hline
+\endfoot
+\hline
+\multicolumn{3}{r}{\textit{Fonte: O Autor (2025)}}
+\endlastfoot
 RNF001 & Tecnologia & O sistema deve ser uma aplicação web acessível através de navegadores modernos (Chrome, Firefox, Safari, Edge). \\ \hline
 RNF002 & Arquitetura & O backend deve seguir arquitetura limpa (Clean Architecture) com separação em camadas (Domain, Application, Infrastructure). \\ \hline
 RNF003 & Tecnologia & O sistema deve utilizar .NET 8 para o backend e Vue.js 3 para o frontend. \\ \hline
@@ -84,9 +101,8 @@ RNF017 & Manutenibilidade & O código deve seguir padrões de nomenclatura e boa
 RNF018 & Manutenibilidade & Tipos de sessão e observações devem ser gerenciáveis sem alteração de código. \\ \hline
 RNF019 & Acessibilidade & A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado). \\ \hline
 RNF020 & Portabilidade & O sistema deve ser containerizável usando Docker para facilitar implantação. \\ \hline
-\end{tabular}
-\legend{O Autor (2025)}
-\end{table}
+\end{longtable}
+}
 
 \section{Tecnologias utilizadas}
 
@@ -160,7 +176,7 @@ A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois de
     \begin{center}
         \includegraphics[width=\textwidth]{Imagens/icompcare-db-schema.png}
     \end{center}
-    \legend{O Autor (2025)}
+\legend{O Autor (2025)}
 \end{figure}
 
 \subsection{Modelo Entidade-Relacionamento}
