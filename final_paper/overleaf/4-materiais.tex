@@ -171,14 +171,6 @@ Esta pilha tecnológica moderna e bem estabelecida no mercado garante que o sist
 
 A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois define como as informações são estruturadas, armazenadas e relacionadas. O banco de dados foi projetado seguindo os princípios de normalização, garantindo a integridade referencial e minimizando redundâncias. O esquema completo do banco de dados está apresentado na Figura \ref{fig:db-schema}.
 
-\begin{figure}[htb]
-    \caption{\label{fig:db-schema}Esquema do Banco de Dados}
-    \begin{center}
-        \includegraphics[width=\textwidth]{Imagens/icompcare-db-schema.png}
-    \end{center}
-\legend{O Autor (2025)}
-\end{figure}
-
 \subsection{Modelo Entidade-Relacionamento}
 
 O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recursos avançados como tipos de dados customizados (ENUMs), triggers, funções e índices otimizados. A estrutura do banco de dados foi organizada em tabelas que representam as principais entidades do domínio do problema.
@@ -210,6 +202,14 @@ O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recu
 
     \item \textbf{student\_enrollments (Matrículas)}: Registra as matrículas dos estudantes nas turmas. Esta tabela é crucial para o controle de acesso dos professores às observações, pois um professor só pode visualizar informações de estudantes matriculados em suas turmas.
 \end{enumerate}
+
+\begin{figure}[H]
+    \caption{\label{fig:db-schema}Esquema do Banco de Dados}
+    \begin{center}
+        \includegraphics[width=0.9\textwidth]{Imagens/icompcare-db-schema.png}
+    \end{center}
+\legend{O Autor (2025)}
+\end{figure}
 
 \subsection{Estratégias de Segurança e Integridade}
 

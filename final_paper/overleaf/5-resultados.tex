@@ -11,62 +11,62 @@ O sistema foi implantado e validado em ambiente de homologação, permitindo tes
 
 A tela de login (Figura \ref{fig:login}) é o ponto de entrada para os usuários autenticados (profissionais, professores e administradores). O sistema utiliza autenticação via token JWT, garantindo segurança na comunicação.
 
-\begin{figure}[htb]
+A segurança dos dados foi um resultado crítico alcançado. Todas as senhas são armazenadas com hash criptográfico (Figura \ref{fig:hash}), garantindo que mesmo em caso de acesso indevido ao banco de dados, as credenciais dos usuários permaneçam protegidas.
+
+\begin{figure}[H]
     \caption{\label{fig:login}Tela de Login do Sistema}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/login-page.png}
+        \includegraphics[width=0.5\textwidth]{Imagens/login-page.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-A segurança dos dados foi um resultado crítico alcançado. Todas as senhas são armazenadas com hash criptográfico (Figura \ref{fig:hash}), garantindo que mesmo em caso de acesso indevido ao banco de dados, as credenciais dos usuários permaneçam protegidas.
-
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:hash}Armazenamento de Senhas com Hash Criptográfico}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/password-hash.png}
+        \includegraphics[width=0.6\textwidth]{Imagens/password-hash.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
 \subsection{Fluxo de Agendamento Público}
 
-Uma das principais funcionalidades do sistema é permitir que qualquer usuário visualize a disponibilidade dos profissionais e solicite um agendamento. A Figura \ref{fig:calendar} mostra a visualização do calendário público, onde os horários disponíveis são destacados.
+Uma das principais funcionalidades do sistema é permitir que qualquer usuário visualize a disponibilidade dos profissionais e solicite um agendamento. A Figura \ref{fig:calendar} mostra a visualização do calendário público, onde é possível preencher e solicitar um atendimento.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:calendar}Formulário de Agendamento Público}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/schedule-p1.png}
+        \includegraphics[width=0.4\textwidth]{Imagens/schedule-p1.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-Ao selecionar um horário, o usuário preenche um formulário com seus dados e o motivo da solicitação (Figura \ref{fig:request}). Este processo elimina a necessidade de troca de emails manuais para verificar disponibilidade.
+Após preencher os dados e selecionar um horário, é mostrado o resumo do agendamento (Figura \ref{fig:request}).
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:request}Resumo do Agendamento}
     \begin{center}
-        \includegraphics[width=0.6\textwidth]{Imagens/schedule-p2.png}
+        \includegraphics[width=0.35\textwidth]{Imagens/schedule-p2.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-Após o preenchimento completo do formulário (Figura \ref{fig:request-complete}), o sistema valida os dados e envia a solicitação.
+Após a revisão do formulário, o sistema valida os dados e envia a solicitação (Figura \ref{fig:request-complete}).
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:request-complete}Confirmação da Solicitação de Agendamento}
     \begin{center}
-        \includegraphics[width=0.6\textwidth]{Imagens/schedule-p3.png}
+        \includegraphics[width=0.7\textwidth]{Imagens/schedule-p3.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
 O sistema dispara automaticamente um email de confirmação de recebimento para o solicitante (Figura \ref{fig:email-confirmation}), garantindo feedback imediato sobre a ação realizada.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:email-confirmation}Email de Confirmação de Agendamento}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{Imagens/schedule-p4-email.png}
+        \includegraphics[width=0.6\textwidth]{Imagens/schedule-p4-email.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
@@ -75,143 +75,136 @@ O sistema dispara automaticamente um email de confirmação de recebimento para 
 
 O profissional possui um painel administrativo onde pode visualizar todas as solicitações recebidas (Figura \ref{fig:dashboard}). O sistema organiza os agendamentos por status (pendente, confirmado, cancelado), facilitando o gerenciamento diário.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:dashboard}Painel de Gestão de Agendamentos}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/appointments-01.png}
+        \includegraphics[width=0.8\textwidth]{Imagens/appointments-01.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
 A partir deste painel, o profissional pode visualizar detalhes de cada agendamento (Figura \ref{fig:appointment-details}) e tomar ações como confirmar, cancelar ou remarcar.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-details}Detalhes de um Agendamento}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/appointments-02.png}
+        \includegraphics[width=0.7\textwidth]{Imagens/appointments-02.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O sistema oferece opções claras para gestão do agendamento (Figura \ref{fig:appointment-actions}), incluindo a possibilidade de confirmar com apenas um clique.
+O sistema permite cadastrar um novo aluno com base nas informações do agendamento, ou mostra que o aluno já existe
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-actions}Vincular Estudante ao Agendamento}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/appointments-03.png}
+        \includegraphics[width=0.3\textwidth]{Imagens/appointments-03.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-Ao confirmar, o profissional pode revisar os dados finais antes do envio da notificação ao estudante (Figura \ref{fig:appointment-confirm}).
-
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-confirm}Confirmação de Vinculação do Estudante ao Agendamento}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/appointments-04.png}
+        \includegraphics[width=0.4\textwidth]{Imagens/appointments-04.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O sistema valida os dados e exibe mensagem de sucesso (Figura \ref{fig:appointment-success}), enquanto dispara automaticamente o email de confirmação para o estudante.
+Em seguida, é necessário escolher o tipo de atendimento (visível apenas para o profissional) que implica na duração da sessão.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-success}Seleção do Tipo de Atendimento}
     \begin{center}
-        \includegraphics[width=0.8\textwidth]{Imagens/appointments-05.png}
+        \includegraphics[width=0.4\textwidth]{Imagens/appointments-05.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O email enviado ao estudante contém todos os detalhes do agendamento confirmado (Figura \ref{fig:appointment-email}), incluindo data, horário e informações sobre o atendimento.
+Após a confirmação pelo profissional, um email é enviado ao estudante contendo todos os detalhes do agendamento (Figura \ref{fig:appointment-email}), incluindo data, horário e informações sobre o atendimento.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-email}Email de Confirmação de Agendamento}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{Imagens/appointments-06.png}
+        \includegraphics[width=0.4\textwidth]{Imagens/appointments-06.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
 Caso seja necessário cancelar, o sistema também envia notificação apropriada ao estudante (Figura \ref{fig:appointment-cancel}).
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:appointment-cancel}Email de Cancelamento de Agendamento}
     \begin{center}
-        \includegraphics[width=0.7\textwidth]{Imagens/appointments-07.png}
+        \includegraphics[width=0.4\textwidth]{Imagens/appointments-07.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
 \subsection{Realização de Sessões e Prontuário Eletrônico}
 
-Para os atendimentos confirmados, o sistema oferece uma interface dedicada para a realização da sessão (Figura \ref{fig:session}). O profissional pode registrar anotações em tempo real utilizando um editor de texto rico.
-
-\begin{figure}[htb]
+Para os atendimentos confirmados, o sistema oferece uma interface dedicada para a realização da sessão, onde é mostrado a atual sessão ativa e sessões anteriores (Figura \ref{fig:session}).
+\begin{figure}[H]
     \caption{\label{fig:session}Tela de Sessões do Profissional}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-01.png}
+        \includegraphics[width=0.8\textwidth]{Imagens/sessions-01.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-Durante a sessão, o profissional tem acesso a ferramentas de formatação de texto (Figura \ref{fig:session-editor}) para organizar melhor suas anotações.
+Durante a sessão, o profissional pode escrever o Prontuário Eletrônico utilizando um editor de texto rico (Figura \ref{fig:session-editor}) para organizar melhor suas anotações.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:session-editor}Prontuário Eletrônico com Editor de Texto Rico}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-02.png}
+        \includegraphics[width=0.8\textwidth]{Imagens/sessions-02.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O sistema permite que o profissional registre informações detalhadas (Figura \ref{fig:session-notes}), mantendo um histórico completo de cada atendimento.
+Ao finalizar a sessão (Figura \ref{fig:session-save}), é possível adicionar uma nota específica para validação futura.
 
-\begin{figure}[htb]
-    \caption{\label{fig:session-notes}Dados do Prontuário Eletrônico Criptografados}
-    \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-03.png}
-    \end{center}
-    \legend{O Autor (2025)}
-\end{figure}
-
-Ao finalizar a sessão, o sistema salva automaticamente todas as informações (Figura \ref{fig:session-save}), aplicando criptografia antes de persistir no banco de dados.
-
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:session-save}Encerramento da Sessão}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-04.png}
+        \includegraphics[width=0.3\textwidth]{Imagens/sessions-04.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O histórico de sessões anteriores pode ser consultado (Figura \ref{fig:session-history}), permitindo ao profissional acompanhar a evolução do estudante ao longo do tempo.
+O histórico de sessões anteriores pode ser consultado (Figura \ref{fig:session-history}), permitindo ao profissional acompanhar a evolução do estudante ao longo do tempo. O acesso aos detalhes de sessões passadas permite uma continuidade efetiva no acompanhamento, com todas as anotações anteriores disponíveis de forma organizada e segura.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:session-history}Histórico de Sessões do Estudante}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-05.png}
+        \includegraphics[width=0.45\textwidth]{Imagens/sessions-05.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-O acesso aos detalhes de sessões passadas (Figura \ref{fig:session-details}) permite uma continuidade efetiva no acompanhamento, com todas as anotações anteriores disponíveis de forma organizada e segura.
-
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:session-details}Conclusão do Agendamento}
     \begin{center}
-        \includegraphics[width=0.9\textwidth]{Imagens/sessions-06.png}
+        \includegraphics[width=0.45\textwidth]{Imagens/sessions-06.png}
     \end{center}
     \legend{O Autor (2025)}
 \end{figure}
 
-Um ponto crucial é a segurança dos dados: todas as anotações salvas são criptografadas antes de serem persistidas no banco de dados, garantindo o sigilo das informações sensíveis dos estudantes.
+Um ponto crucial é a segurança dos dados: todas as anotações salvas são criptografadas antes de serem persistidas no banco de dados (Figura \ref{fig:cripto-notes}), garantindo o sigilo das informações sensíveis dos estudantes.
+
+\begin{figure}[H]
+    \caption{\label{fig:cripto-notes}Dados do Prontuário Eletrônico Criptografados}
+    \begin{center}
+        \includegraphics[width=0.7\textwidth]{Imagens/sessions-03.png}
+    \end{center}
+    \legend{O Autor (2025)}
+\end{figure}
 
 \subsection{Área do Professor}
 
 Os professores têm acesso a uma área específica onde podem visualizar as disciplinas que lecionam e a lista de alunos matriculados (Figura \ref{fig:professor}).
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:professor}Painel do Professor - Lista de Alunos por Disciplina Ofertada}
     \begin{center}
         \includegraphics[width=0.9\textwidth]{Imagens/professors-01.png}
@@ -221,7 +214,7 @@ Os professores têm acesso a uma área específica onde podem visualizar as disc
 
 Ao acessar os detalhes de um aluno, o professor pode visualizar observações compartilhadas pelos profissionais de apoio (Figura \ref{fig:student-details}). Esta funcionalidade promove a integração entre o apoio psicopedagógico e o corpo docente, permitindo um acompanhamento mais holístico do estudante.
 
-\begin{figure}[htb]
+\begin{figure}[H]
     \caption{\label{fig:student-details}Detalhes do Aluno e Observações}
     \begin{center}
         \includegraphics[width=0.9\textwidth]{Imagens/professors-02.png}
@@ -231,11 +224,11 @@ Ao acessar os detalhes de um aluno, o professor pode visualizar observações co
 
 \section{Discussão dos Resultados}
 
-A implementação do sistema trouxe melhorias significativas em relação ao processo manual anterior. A seguir, discutem-se os principais ganhos observados.
+A implementação do sistema traz melhorias significativas em relação ao processo manual anterior. A seguir, discutem-se os principais ganhos observados.
 
 \subsection{Eficiência Operacional}
 
-A automação do agendamento reduziu drasticamente o tempo gasto pela profissional com a gestão de horários. Anteriormente, a confirmação de um único atendimento poderia exigir a troca de múltiplos emails. Com o sistema, o estudante visualiza a disponibilidade real e solicita o horário desejado, restando ao profissional apenas a aprovação com um clique.
+A automação do agendamento reduz drasticamente o tempo gasto pela profissional com a gestão de horários. Anteriormente, a confirmação de um único atendimento poderia exigir a troca de múltiplos emails e encontros presenciais. Com o sistema, o estudante visualiza a disponibilidade real e solicita o horário desejado, restando ao profissional apenas a aprovação com um clique.
 
 \subsection{Segurança da Informação}
 
