@@ -1,0 +1,113 @@
+name: CD
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  deploy:
+    if: github.ref_name == 'main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Build Database Docker Image
+        run: |
+          cd code/db
+          docker build -t icompcare-db:latest .
+
+      - name: Build API Docker Image
+        run: |
+          cd code/api
+          docker build -t icompcare-api:latest .
+
+      - name: Build App Docker Image
+        run: |
+          cd code/app
+          docker build -t icompcare-app:latest .
+
+      - name: Save Docker Images as .tar
+        run: |
+          docker save icompcare-db:latest -o icompcare-db.tar
+          docker save icompcare-api:latest -o icompcare-api.tar
+          docker save icompcare-app:latest -o icompcare-app.tar
+
+      - name: Setup SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SERVER01_SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+          ssh-keyscan -H ${{ secrets.SERVER01_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Copy Docker Images to Server
+        run: |
+          scp icompcare-db.tar ${{ secrets.SERVER01_USER }}@${{ secrets.SERVER01_HOST }}:/tmp/icompcare-db.tar
+          scp icompcare-api.tar ${{ secrets.SERVER01_USER }}@${{ secrets.SERVER01_HOST }}:/tmp/icompcare-api.tar
+          scp icompcare-app.tar ${{ secrets.SERVER01_USER }}@${{ secrets.SERVER01_HOST }}:/tmp/icompcare-app.tar
+
+      - name: Deploy on VPS
+        run: |
+          ssh ${{ secrets.SERVER01_USER }}@${{ secrets.SERVER01_HOST }} << 'EOF'
+            set -e
+            
+            # Load Docker images
+            docker load -i /tmp/icompcare-db.tar
+            docker load -i /tmp/icompcare-api.tar
+            docker load -i /tmp/icompcare-app.tar
+            
+            # Create network if it doesn't exist
+            docker network inspect icompcare-network >/dev/null 2>&1 || docker network create icompcare-network
+            
+            # Deploy Database
+            docker stop icompcare-db || true
+            docker rm icompcare-db || true
+            docker run -d \
+              --name icompcare-db \
+              --network icompcare-network \
+              -p ${{ vars.DB_PORT }}:5432 \
+              -e POSTGRES_DB=${{ secrets.POSTGRES_DB }} \
+              -e POSTGRES_USER=${{ secrets.POSTGRES_USER }} \
+              -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
+              -v icompcare-db-data:/var/lib/postgresql/data \
+              icompcare-db:latest
+            
+            # Wait for database to be ready
+            sleep 10
+            
+            # Deploy API
+            docker stop icompcare-api || true
+            docker rm icompcare-api || true
+            docker run -d \
+              --name icompcare-api \
+              --network icompcare-network \
+              --dns 8.8.8.8 \
+              --dns 8.8.4.4 \
+              -p ${{ vars.API_PORT }}:8080 \
+              -e "ConnectionStrings__DefaultConnection=Host=icompcare-db;Database=${{ secrets.POSTGRES_DB }};Username=${{ secrets.POSTGRES_USER }};Password=${{ secrets.POSTGRES_PASSWORD }}" \
+              -e "JwtSettings__SecretKey=${{ secrets.JWT_SECRET_KEY }}" \
+              -e "JwtSettings__ExpirationHours=${{ vars.JWT_EXPIRATION_HOURS }}" \
+              -e "Email__SmtpHost=${{ secrets.SMTP_HOST }}" \
+              -e "Email__SmtpPort=${{ vars.SMTP_PORT }}" \
+              -e "Email__SmtpUsername=${{ secrets.SMTP_USERNAME }}" \
+              -e "Email__SmtpPassword=${{ secrets.SMTP_PASSWORD }}" \
+              -e "Email__FromEmail=${{ secrets.SMTP_FROM_EMAIL }}" \
+              -e "Email__FromName=${{ vars.SMTP_FROM_NAME }}" \
+              -e "Email__EnableSsl=${{ vars.SMTP_ENABLE_SSL }}" \
+              icompcare-api:latest
+            
+            # Deploy App
+            docker stop icompcare-app || true
+            docker rm icompcare-app || true
+            docker run -d \
+              --name icompcare-app \
+              --network icompcare-network \
+              -p ${{ vars.APP_PORT }}:80 \
+              -e "VITE_API_BASE_URL=${{ vars.VITE_API_BASE_URL }}" \
+              icompcare-app:latest
+            
+            # Cleanup
+            rm -f /tmp/icompcare-*.tar
+          EOF
