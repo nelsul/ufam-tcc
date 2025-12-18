@@ -72,7 +72,6 @@ FxCopReport.xml
 yarn.lock
 
 # NPM
-package-lock.json
 node_modules/
 
 # Visual Studio Code
