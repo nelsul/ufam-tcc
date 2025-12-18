@@ -9,7 +9,7 @@ import ProfessorDashboardMenu from "../../components/dashboard/ProfessorDashboar
     >
       <ProfessorDashboardMenu />
 
-      <main class="flex-1 overflow-y-auto p-4 md:p-8 scrollbar-hide pb-32 md:pb-8 bg-white/50">
+      <main class="flex-1 overflow-y-auto pt-16 md:pt-8 px-4 pb-8 md:p-8 scrollbar-hide bg-white/50">
         <router-view v-slot="{ Component }">
           <transition name="fade" mode="out-in">
             <component :is="Component" />

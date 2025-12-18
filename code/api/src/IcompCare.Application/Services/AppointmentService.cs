@@ -358,7 +358,7 @@ public class AppointmentService : IAppointmentService
             }
             else if (
                 (startTimeChanged || endTimeChanged)
-                && appointment.Status != AppointmentStatus.Cancelled
+                && appointment.Status == AppointmentStatus.Confirmed
             )
             {
                 SendAppointmentRescheduledEmail(appointment, previousStartTime, previousEndTime);

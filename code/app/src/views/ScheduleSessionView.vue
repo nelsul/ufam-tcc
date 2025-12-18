@@ -92,16 +92,38 @@ const splitTimeRangeISO = (
     return slots;
   }
 
-  let current = new Date(startISO);
-  const end = new Date(endISO);
+  const rangeStart = new Date(startISO);
+  const rangeEnd = new Date(endISO);
+
+  // Find the next hour boundary on or after rangeStart
+  let current = new Date(rangeStart);
+  const minutes = current.getMinutes();
+  
+  // If not on the hour, start from the actual start time for the first slot
+  if (minutes !== 0) {
+    // First slot starts at the actual range start
+    const firstSlotEnd = new Date(current.getTime() + durationMinutes * 60000);
+    if (firstSlotEnd <= rangeEnd) {
+      slots.push({
+        start: formatTime(current),
+        end: formatTime(firstSlotEnd),
+        startISO: current.toISOString(),
+      });
+    }
+    
+    // Move to next hour boundary
+    current.setMinutes(0, 0, 0);
+    current.setHours(current.getHours() + 1);
+  }
 
   let iterations = 0;
   const maxIterations = 100;
 
-  while (iterations < maxIterations) {
+  // Generate hourly slots from hour boundaries
+  while (iterations < maxIterations && current < rangeEnd) {
     const nextSlot = new Date(current.getTime() + durationMinutes * 60000);
 
-    if (nextSlot > end) break;
+    if (nextSlot > rangeEnd) break;
 
     slots.push({
       start: formatTime(current),

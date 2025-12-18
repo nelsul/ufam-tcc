@@ -1,6 +1,9 @@
 import { store } from "../store";
 
-const BASE_URL = import.meta.env.VITE_API_BASE_URL || "http://localhost:5133/api";
+const BASE_URL = 
+  (typeof window !== 'undefined' && (window as any).__ENV__?.VITE_API_BASE_URL) ||
+  import.meta.env.VITE_API_BASE_URL || 
+  "http://localhost:5133/api";
 
 const getHeaders = (contentType: string | null = "application/json"): HeadersInit => {
   const headers: Record<string, string> = {};
