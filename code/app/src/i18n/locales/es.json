@@ -6,7 +6,7 @@
   "enter_email": "Ingrese su correo",
   "registration": "Matrícula",
   "enter_registration": "Ingrese su matrícula",
-  "reason": "Motivo de la Consulta",
+  "reason": "Motivo de la Atendimento",
   "enter_reason": "Describa el motivo de su solicitud de atención",
   "schedule_session": "Agendar Cita",
   "book_appointment": "Reserve su cita",
@@ -113,7 +113,7 @@
 
   "appointments": {
     "title": "Citas",
-    "subtitle": "Próximas sesiones con sus pacientes.",
+    "subtitle": "Próximas sesiones con sus alunos.",
     "search_placeholder": "Buscar por nombre, correo o matrícula...",
     "all_statuses": "Todos los Estados",
     "pending": "Pendiente",
@@ -126,7 +126,7 @@
     "no_session_type": "Sin tipo de sesión",
     "view_details": "Ver Detalles",
     "details_title": "Detalles de la Cita",
-    "patient_information": "Información del Paciente",
+    "patient_information": "Información del Aluno",
     "link_to_student": "Vincular a Registro de Estudiante",
     "linked": "Vinculado",
     "no_matching_students": "No se encontraron estudiantes",
@@ -148,13 +148,13 @@
     "cancel_failed": "Error al cancelar cita",
     "currently_linked": "Vinculado Actualmente",
     "unlink": "Desvincular estudiante",
-    "suggestions_based_on_patient": "Sugerencias basadas en la información del paciente",
+    "suggestions_based_on_patient": "Sugerencias basadas en la información del aluno",
     "search_results": "Resultados de búsqueda"
   },
 
   "sessions": {
     "title": "Sesiones",
-    "subtitle": "Administre sus sesiones con pacientes.",
+    "subtitle": "Administre sus sesiones con alunos.",
     "current_session": "Sesión Actual",
     "past_sessions": "Sesiones Anteriores",
     "no_sessions": "No hay sesiones aún",
@@ -178,8 +178,8 @@
     "end_failed": "Error al terminar sesión",
     "load_failed": "Error al cargar sesiones",
     "patient_record": "Expediente",
-    "patient_record_created": "¡Expediente del paciente creado exitosamente!",
-    "patient_record_failed": "Error al abrir expediente del paciente",
+    "patient_record_created": "¡Expediente del aluno creado exitosamente!",
+    "patient_record_failed": "Error al abrir expediente del aluno",
     "search_label": "Buscar",
     "search_placeholder": "Buscar por nombre, correo o matrícula...",
     "date_from": "Desde",
@@ -218,10 +218,10 @@
   },
 
   "patient_record": {
-    "title": "Historial del Paciente",
+    "title": "Historial del Aluno",
     "save": "Guardar Historial",
-    "placeholder": "Comience a escribir el historial del paciente...",
-    "load_error": "Error al cargar historial del paciente",
+    "placeholder": "Comience a escribir el historial del aluno...",
+    "load_error": "Error al cargar historial del aluno",
     "saved": "¡Historial guardado exitosamente!",
     "save_error": "Error al guardar historial",
     "unsaved_changes": "Tiene cambios sin guardar. ¿Está seguro que desea salir?",
@@ -285,7 +285,7 @@
     "new_session_type": "Nuevo Tipo de Sesión",
     "edit": "Editar Tipo de Sesión",
     "search_placeholder": "Buscar por nombre...",
-    "name_placeholder": "ej: Consulta Inicial",
+    "name_placeholder": "ej: Atendimento Inicial",
     "duration": "Duración (minutos)",
     "description_placeholder": "Describa brevemente este tipo de sesión...",
     "create": "Crear Tipo de Sesión",
@@ -373,7 +373,7 @@
   },
 
   "patient_observations": {
-    "title": "Observaciones del Paciente",
+    "title": "Observaciones del Aluno",
     "search_placeholder": "Buscar observaciones para agregar...",
     "add_note": "Agregar Nota",
     "no_observations": "No se encontraron observaciones",
@@ -521,7 +521,7 @@
     },
 
     "patient_record": {
-      "not_found": "Expediente del paciente no encontrado"
+      "not_found": "Expediente del aluno no encontrado"
     },
 
     "observation": {
@@ -530,7 +530,7 @@
     },
 
     "patient_observation": {
-      "not_found": "Observación del paciente no encontrada"
+      "not_found": "Observación del aluno no encontrada"
     },
 
     "common": {

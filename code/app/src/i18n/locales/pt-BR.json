@@ -6,7 +6,7 @@
   "enter_email": "Digite seu e-mail",
   "registration": "Matrícula",
   "enter_registration": "Digite sua matrícula",
-  "reason": "Motivo da Consulta",
+  "reason": "Motivo do Atendimento",
   "enter_reason": "Descreva o motivo da sua solicitação de atendimento",
   "schedule_session": "Agendar Atendimento",
   "book_appointment": "Agende seu horário",
@@ -113,7 +113,7 @@
 
   "appointments": {
     "title": "Agendamentos",
-    "subtitle": "Próximas sessões com seus pacientes.",
+    "subtitle": "Próximas sessões com seus alunos.",
     "search_placeholder": "Buscar por nome, e-mail ou matrícula...",
     "all_statuses": "Todos os Status",
     "pending": "Pendente",
@@ -126,7 +126,7 @@
     "no_session_type": "Sem tipo de sessão",
     "view_details": "Ver Detalhes",
     "details_title": "Detalhes do Agendamento",
-    "patient_information": "Informações do Paciente",
+    "patient_information": "Informações do Aluno",
     "link_to_student": "Vincular ao Registro de Aluno",
     "linked": "Vinculado",
     "no_matching_students": "Nenhum aluno encontrado",
@@ -148,13 +148,13 @@
     "cancel_failed": "Falha ao cancelar agendamento",
     "currently_linked": "Vinculado Atualmente",
     "unlink": "Desvincular estudante",
-    "suggestions_based_on_patient": "Sugestões baseadas nas informações do paciente",
+    "suggestions_based_on_patient": "Sugestões baseadas nas informações do aluno",
     "search_results": "Resultados da busca"
   },
 
   "sessions": {
     "title": "Sessões",
-    "subtitle": "Gerencie suas sessões com pacientes.",
+    "subtitle": "Gerencie suas sessões com alunos.",
     "current_session": "Sessão Atual",
     "past_sessions": "Sessões Anteriores",
     "no_sessions": "Nenhuma sessão ainda",
@@ -218,9 +218,9 @@
   },
 
   "patient_record": {
-    "title": "Prontuário do Paciente",
+    "title": "Prontuário do Aluno",
     "save": "Salvar Prontuário",
-    "placeholder": "Comece a escrever o prontuário do paciente...",
+    "placeholder": "Comece a escrever o prontuário do aluno...",
     "load_error": "Erro ao carregar prontuário",
     "saved": "Prontuário salvo com sucesso!",
     "save_error": "Erro ao salvar prontuário",
@@ -285,7 +285,7 @@
     "new_session_type": "Novo Tipo de Sessão",
     "edit": "Editar Tipo de Sessão",
     "search_placeholder": "Buscar por nome...",
-    "name_placeholder": "ex: Consulta Inicial",
+    "name_placeholder": "ex: Atendimento Inicial",
     "duration": "Duração (minutos)",
     "description_placeholder": "Descreva brevemente este tipo de sessão...",
     "create": "Criar Tipo de Sessão",
@@ -373,7 +373,7 @@
   },
 
   "patient_observations": {
-    "title": "Observações do Paciente",
+    "title": "Observações do Aluno",
     "search_placeholder": "Buscar observações para adicionar...",
     "add_note": "Adicionar Nota",
     "no_observations": "Nenhuma observação encontrada",
@@ -530,7 +530,7 @@
     },
 
     "patient_observation": {
-      "not_found": "Observação do paciente não encontrada"
+      "not_found": "Observação do aluno não encontrada"
     },
 
     "common": {

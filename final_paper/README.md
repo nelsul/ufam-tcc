@@ -33,7 +33,7 @@
 
 # Resumo
 
-A crescente demanda por suporte à saúde mental no ensino superior impulsiona a busca por ferramentas tecnológicas que otimizem a gestão dos atendimentos. Visando aprimorar os serviços psicopedagógicos oferecidos na Universidade Federal do Amazonas (UFAM), este trabalho apresenta o desenvolvimento de um Sistema de Apoio Acadêmico. A plataforma web foi projetada para agregar eficiência, segurança e organização ao processo, servindo como uma evolução aos fluxos de trabalho tradicionais. A solução introduz um portal de agendamento online, onde alunos podem visualizar a disponibilidade da equipe e solicitar horários de forma centralizada. Para os profissionais de apoio, o sistema oferece um painel de gestão que simplifica a administração de consultas, além de um módulo de prontuário eletrônico para o registro seguro e sigiloso das sessões, cujos dados são protegidos por criptografia para garantir a máxima confidencialidade. Como funcionalidade de destaque, o sistema permite que observações pontuais, julgadas relevantes pelos profissionais para o ambiente de sala de aula, sejam compartilhadas de forma segura. Cada professor pode visualizar apenas as informações pertinentes aos seus próprios alunos, o que promove uma colaboração mais integrada e com maior privacidade no acompanhamento do estudante. O projeto foi desenvolvido seguindo etapas da engenharia de software, incluindo levantamento de requisitos, modelagem de dados e implementação de uma arquitetura moderna. Como resultado, a plataforma eleva a qualidade do serviço de apoio, proporcionando maior agilidade e confidencialidade, utilizando a criptografia como pilar técnico para a segurança das informações e a privacidade dos estudantes. O sistema estabelece, assim, uma ponte de comunicação ética e eficaz entre os profissionais e o corpo docente, contribuindo para um ambiente acadêmico mais integrado e eficiente.
+A crescente demanda por suporte à saúde mental no ensino superior impulsiona a busca por ferramentas tecnológicas que otimizem a gestão dos atendimentos. Visando aprimorar os serviços psicopedagógicos oferecidos na Universidade Federal do Amazonas (UFAM), este trabalho apresenta o desenvolvimento de um Sistema de Apoio Acadêmico. A plataforma web foi projetada para agregar eficiência, segurança e organização ao processo, servindo como uma evolução aos fluxos de trabalho tradicionais. A solução introduz um portal de agendamento online, onde alunos podem visualizar a disponibilidade da equipe e solicitar horários de forma centralizada. Para os profissionais de apoio, o sistema oferece um painel de gestão que simplifica a administração de atendimentos, além de um módulo de prontuário eletrônico para o registro seguro e sigiloso das sessões, cujos dados são protegidos por criptografia para garantir a máxima confidencialidade. Como funcionalidade de destaque, o sistema permite que observações pontuais, julgadas relevantes pelos profissionais para o ambiente de sala de aula, sejam compartilhadas de forma segura. Cada professor pode visualizar apenas as informações pertinentes aos seus próprios alunos, o que promove uma colaboração mais integrada e com maior privacidade no acompanhamento do estudante. O projeto foi desenvolvido seguindo etapas da engenharia de software, incluindo levantamento de requisitos, modelagem de dados e implementação de uma arquitetura moderna. Como resultado, a plataforma eleva a qualidade do serviço de apoio, proporcionando maior agilidade e confidencialidade, utilizando a criptografia como pilar técnico para a segurança das informações e a privacidade dos estudantes. O sistema estabelece, assim, uma ponte de comunicação ética e eficaz entre os profissionais e o corpo docente, contribuindo para um ambiente acadêmico mais integrado e eficiente.
 
 **Palavras-chave:** apoio psicopedagógico, sistema web, gestão acadêmica, privacidade de dados, engenharia de software.
 
@@ -51,7 +51,7 @@ The growing demand for mental health support in higher education drives the sear
 
 A gestão de serviços de apoio psicopedagógico em universidades como a UFAM demanda ferramentas eficientes. Processos manuais para agendamento, registro e comunicação são frequentemente lentos e apresentam riscos à privacidade dos dados dos estudantes. A tecnologia web oferece uma solução direta para modernizar e proteger esses fluxos de trabalho.
 
-Este trabalho apresenta o desenvolvimento de um Sistema de Apoio Acadêmico, uma plataforma web criada para centralizar e otimizar a gestão dos atendimentos pedagógicos no Instituto de Computação (ICOMP). O sistema automatiza o processo de agendamento de consultas, substitui prontuários físicos por um módulo eletrônico com dados protegidos por criptografia e estabelece um canal de comunicação seguro.
+Este trabalho apresenta o desenvolvimento de um Sistema de Apoio Acadêmico, uma plataforma web criada para centralizar e otimizar a gestão dos atendimentos pedagógicos no Instituto de Computação (ICOMP). O sistema automatiza o processo de agendamento de atendimentos, substitui prontuários físicos por um módulo eletrônico com dados protegidos por criptografia e estabelece um canal de comunicação seguro.
 
 O principal diferencial da plataforma é permitir que profissionais compartilhem observações pontuais e não-clínicas com professores específicos, que podem visualizar informações apenas dos seus próprios alunos. Essa funcionalidade promove um acompanhamento integrado do estudante, mantendo a confidencialidade e o controle de acesso à informação.
 
@@ -67,7 +67,7 @@ Desenvolver um sistema web seguro e eficiente para automatizar o gerenciamento d
 
 - Levantar os requisitos funcionais e não funcionais do sistema.
 - Projetar o banco de dados para o armazenamento seguro das informações.
-- Implementar um módulo de agendamento de consultas online.
+- Implementar um módulo de agendamento de atendimentos online.
 - Desenvolver um módulo de prontuário eletrônico com criptografia de dados.
 - Criar um sistema de perfis de acesso com permissões restritas para cada tipo de usuário (aluno, professor, profissional e administrador).
 - Validar as funcionalidades da plataforma para garantir que atendam às necessidades dos usuários.
@@ -91,7 +91,7 @@ O processo foi organizado nas seguintes fases sequenciais:
 
 4.  **Desenvolvimento Iterativo:** A implementação do código foi dividida em ciclos, focando em entregar módulos funcionais de forma incremental. As principais iterações foram:
 
-    - **Iteração 1: Módulo de Agendamento.** Implementação do calendário público, do formulário de solicitação e do painel de gerenciamento de consultas para o profissional.
+    - **Iteração 1: Módulo de Agendamento.** Implementação do calendário público, do formulário de solicitação e do painel de gerenciamento de atendimentos para o profissional.
     - **Iteração 2: Módulo de Prontuários e Perfis.** Desenvolvimento da área logada do profissional para criação de prontuários eletrônicos e da área do aluno para visualização de histórico.
     - **Iteração 3: Módulo de Professores e Administrador.** Criação do sistema de permissões, da visualização restrita para professores e das funcionalidades administrativas.
 
@@ -159,13 +159,13 @@ Para o armazenamento de senhas, utilizam-se funções de hash criptográfico. Di
 
 # 3. Trabalhos Relacionados
 
-Neste capítulo, são apresentados trabalhos acadêmicos e projetos de software que abordam temas correlatos ao deste TCC, como sistemas de agendamento online, gerenciamento de consultas pedagógicas e plataformas de apoio ao estudante. A análise destes trabalhos permite identificar funcionalidades consolidadas, tecnologias empregadas e, fundamentalmente, as lacunas que justificam o desenvolvimento da presente proposta.
+Neste capítulo, são apresentados trabalhos acadêmicos e projetos de software que abordam temas correlatos ao deste TCC, como sistemas de agendamento online, gerenciamento de atendimentos pedagógicas e plataformas de apoio ao estudante. A análise destes trabalhos permite identificar funcionalidades consolidadas, tecnologias empregadas e, fundamentalmente, as lacunas que justificam o desenvolvimento da presente proposta.
 
-## 3.1 Sistema para Gerenciamento e Agendamento de Consultas para Psicólogos e Clientes
+## 3.1 Sistema para Gerenciamento e Agendamento de Atendimentos para Psicólogos e Clientes
 
-Desenvolvido no âmbito de um Trabalho de Conclusão de Curso no Instituto Federal de Goiás (IFG), este projeto de Souza (2021) propõe uma plataforma web para a gestão de agendamentos de consultas pedagógicas. O sistema inclui funcionalidades essenciais como agendamento, registro de anamneses e geração de relatórios, operando com perfis de usuário distintos para o profissional e para o cliente. As tecnologias utilizadas foram PHP, JavaScript, HTML, CSS e MySQL.
+Desenvolvido no âmbito de um Trabalho de Conclusão de Curso no Instituto Federal de Goiás (IFG), este projeto de Souza (2021) propõe uma plataforma web para a gestão de agendamentos de atendimentos pedagógicas. O sistema inclui funcionalidades essenciais como agendamento, registro de anamneses e geração de relatórios, operando com perfis de usuário distintos para o profissional e para o cliente. As tecnologias utilizadas foram PHP, JavaScript, HTML, CSS e MySQL.
 
-A principal relevância deste trabalho reside na sua abordagem direta ao agendamento online no contexto da pedagogia, validando a arquitetura de perfis de usuário (profissional e paciente) que é similar à base do nosso sistema (profissional e aluno). No entanto, sua proposta é focada na relação dual cliente-profissional. O diferencial do nosso projeto se manifesta na introdução de um terceiro perfil, o de professor, e na criação de um ecossistema integrado ao ambiente acadêmico, com um canal de comunicação específico e controlado, funcionalidade não abordada por este trabalho.
+A principal relevância deste trabalho reside na sua abordagem direta ao agendamento online no contexto da pedagogia, validando a arquitetura de perfis de usuário (profissional e aluno) que é similar à base do nosso sistema (profissional e aluno). No entanto, sua proposta é focada na relação dual cliente-profissional. O diferencial do nosso projeto se manifesta na introdução de um terceiro perfil, o de professor, e na criação de um ecossistema integrado ao ambiente acadêmico, com um canal de comunicação específico e controlado, funcionalidade não abordada por este trabalho.
 
 **Referência:** SOUZA, Wesley Queiroz de. **Sistema para gerenciamento e agendamento de consultas para Psicólogos e clientes: atendimentos online em meio a pandemia do Covid-19**. 2021. TCC (Bacharelado em Sistemas de Informação) - Instituto Federal de Goiás, Câmpus Jataí. Disponível em: [https://repositorio.ifg.edu.br/handle/prefix/1726](https://repositorio.ifg.edu.br/handle/prefix/1726).
 
@@ -251,14 +251,14 @@ Os Requisitos Não Funcionais especificam os critérios de qualidade e as restri
 | RNF006 | Segurança           | O acesso ao sistema deve ser controlado por autenticação JWT (JSON Web Token).                                               |
 | RNF007 | Segurança           | As senhas dos usuários devem ser armazenadas utilizando hash.                                                                |
 | RNF008 | Segurança           | Os prontuários eletrônicos devem ser armazenados de forma criptografada no banco de dados.                                   |
-| RNF009 | Segurança           | O acesso aos dados de pacientes deve ser restrito apenas aos profissionais autorizados.                                      |
+| RNF009 | Segurança           | O acesso aos dados de alunos deve ser restrito apenas aos profissionais autorizados.                                      |
 | RNF010 | Segurança           | Professores devem visualizar apenas observações de estudantes matriculados em suas disciplinas.                              |
 | RNF011 | Internacionalização | O sistema deve oferecer suporte a múltiplos idiomas (Português, Inglês, Espanhol).                                           |
 | RNF012 | Confiabilidade      | O sistema de envio de emails deve utilizar fila assíncrona para garantir entrega.                                            |
 | RNF013 | Confiabilidade      | O sistema de emails deve implementar retry automático em caso de falhas temporárias.                                         |
 | RNF014 | Usabilidade         | Todas as notificações por email devem ser enviadas em português brasileiro.                                                  |
 | RNF015 | Usabilidade         | As datas e horários devem ser exibidas no fuso horário de Manaus (UTC-4).                                                    |
-| RNF016 | Desempenho          | O sistema deve utilizar índices de banco de dados para otimizar consultas frequentes.                                        |
+| RNF016 | Desempenho          | O sistema deve utilizar índices de banco de dados para otimizar atendimentos frequentes.                                        |
 | RNF017 | Manutenibilidade    | O código deve seguir padrões de nomenclatura e boas práticas de desenvolvimento.                                             |
 | RNF018 | Manutenibilidade    | Tipos de sessão e observações devem ser gerenciáveis sem alteração de código.                                                |
 | RNF019 | Acessibilidade      | A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado).                             |
@@ -339,13 +339,13 @@ O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recu
 
 4. **sessions (Sessões)**: Registra as sessões de atendimento efetivamente realizadas. Está vinculada a um agendamento confirmado e armazena horário de início, término e anotações do profissional. As anotações são armazenadas de forma criptografada para garantir sigilo.
 
-5. **session_types (Tipos de Sessão)**: Tabela de configuração que define os tipos de atendimento disponíveis (ex: "Primeira Consulta", "Retorno", "Orientação"). Cada tipo possui nome, descrição e duração padrão em minutos.
+5. **session_types (Tipos de Sessão)**: Tabela de configuração que define os tipos de atendimento disponíveis (ex: "Primeiro Atendimento", "Retorno", "Orientação"). Cada tipo possui nome, descrição e duração padrão em minutos.
 
 6. **patient_records (Prontuários)**: Armazena os prontuários eletrônicos dos estudantes. O conteúdo é criptografado, garantindo que apenas profissionais autorizados possam acessar informações sensíveis.
 
 7. **observations (Tipos de Observação)**: Tabela de configuração que categoriza os tipos de observações que podem ser feitas sobre estudantes (ex: "Dificuldade de Concentração", "Necessita Acompanhamento").
 
-8. **patient_observations (Observações de Pacientes)**: Registra observações específicas feitas por profissionais sobre estudantes. Estas observações podem ser compartilhadas de forma controlada com professores que lecionam para o estudante em questão.
+8. **patient_observations (Observações de Alunos)**: Registra observações específicas feitas por profissionais sobre estudantes. Estas observações podem ser compartilhadas de forma controlada com professores que lecionam para o estudante em questão.
 
 9. **semesters (Semestres)**: Representa os períodos letivos, com datas de início e fim. Permite organizar ofertas de disciplinas por período acadêmico.
 
@@ -370,10 +370,10 @@ O banco de dados implementa diversas estratégias para garantir segurança e int
 
 **Triggers de Atualização**: Um trigger `update_modified_column()` é aplicado a todas as tabelas, atualizando automaticamente o campo `updated_at` sempre que um registro é modificado, permitindo auditoria de alterações.
 
-**Índices Otimizados**: O banco possui índices estratégicos em campos frequentemente utilizados em consultas:
+**Índices Otimizados**: O banco possui índices estratégicos em campos frequentemente utilizados em atendimentos:
 
 - Índices em chaves estrangeiras para otimizar joins
-- Índices compostos em `(start_time, end_time)` para consultas de disponibilidade e agendamentos
+- Índices compostos em `(start_time, end_time)` para atendimentos de disponibilidade e agendamentos
 - Índices em campos de busca como `student_id`, `professional_id`, `semester_id`
 
 **Constraints de Validação**: O banco implementa validações a nível de dados:
@@ -549,7 +549,7 @@ A segurança dos dados foi um resultado crítico alcançado. Todas as senhas sã
 
 ## 5.2 Módulo de Agendamento Público
 
-Para os alunos, foi disponibilizada uma interface pública de agendamento acessível e intuitiva. O calendário exibe em tempo real a disponibilidade dos profissionais, respeitando rigorosamente o fuso horário de Manaus (UTC-4), o que elimina confusões de horário comuns em sistemas web. O formulário de solicitação permite que o aluno informe seus dados e o motivo da consulta de forma privada.
+Para os alunos, foi disponibilizada uma interface pública de agendamento acessível e intuitiva. O calendário exibe em tempo real a disponibilidade dos profissionais, respeitando rigorosamente o fuso horário de Manaus (UTC-4), o que elimina confusões de horário comuns em sistemas web. O formulário de solicitação permite que o aluno informe seus dados e o motivo do atendimento de forma privada.
 
 ![Agendamento 1](./images/schedule-p1.png)
 ![Agendamento 2](./images/schedule-p2.png)
@@ -561,7 +561,7 @@ Ao submeter uma solicitação, o sistema dispara automaticamente um email de con
 
 ## 5.3 Gestão de Atendimentos (Visão do Profissional)
 
-O painel do profissional centraliza a gestão das consultas de forma eficiente. O profissional pode visualizar solicitações pendentes em uma lista organizada, com opções claras para confirmar, cancelar ou remarcar agendamentos.
+O painel do profissional centraliza a gestão dos atendimentos de forma eficiente. O profissional pode visualizar solicitações pendentes em uma lista organizada, com opções claras para confirmar, cancelar ou remarcar agendamentos.
 
 ![Agendamento2 1](./images/appointments-01.png)
 ![Agendamento2 2](./images/appointments-02.png)
@@ -582,14 +582,14 @@ Todos os emails utilizam templates HTML responsivos e em português, reforçando
 
 ## 5.4 Prontuário Eletrônico e Sessões
 
-O módulo de sessão substitui o uso de prontuários em papel ou arquivos dispersos. O profissional dispõe de um editor de texto rico (Rich Text Editor) para registrar a evolução do paciente e as anotações da sessão. O sistema controla automaticamente o tempo da sessão (início e fim) e garante que as anotações sejam salvas de forma segura e criptografada.
+O módulo de sessão substitui o uso de prontuários em papel ou arquivos dispersos. O profissional dispõe de um editor de texto rico (Rich Text Editor) para registrar a evolução do aluno e as anotações da sessão. O sistema controla automaticamente o tempo da sessão (início e fim) e garante que as anotações sejam salvas de forma segura e criptografada.
 
 ![Sessões 1](./images/sessions-01.png)
 ![Sessões 2](./images/sessions-02.png)
 ![Sessões 3](./images/sessions-03.png)
 ![Sessões 4](./images/sessions-04.png)
 
-A interface permite também a consulta rápida ao histórico de atendimentos anteriores do estudante.
+A interface permite também o atendimento rápida ao histórico de atendimentos anteriores do estudante.
 
 ![Sessões 5](./images/sessions-05.png)
 ![Sessões 6](./images/sessions-06.png)

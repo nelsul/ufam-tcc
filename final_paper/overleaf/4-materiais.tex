@@ -82,25 +82,21 @@ Os Requisitos Não Funcionais especificam os critérios de qualidade e as restri
 \multicolumn{3}{r}{\textit{Fonte: O Autor (2025)}}
 \endlastfoot
 RNF001 & Tecnologia & O sistema deve ser uma aplicação web acessível através de navegadores modernos (Chrome, Firefox, Safari, Edge). \\ \hline
-RNF002 & Arquitetura & O backend deve seguir arquitetura limpa (Clean Architecture) com separação em camadas (Domain, Application, Infrastructure). \\ \hline
-RNF003 & Tecnologia & O sistema deve utilizar .NET 8 para o backend e Vue.js 3 para o frontend. \\ \hline
-RNF004 & Banco de Dados & O sistema deve utilizar PostgreSQL como sistema gerenciador de banco de dados. \\ \hline
-RNF005 & Usabilidade & A interface da tela de solicitaçao deve ser responsiva e adaptável a dispositivos móveis, tablets e desktops. \\ \hline
-RNF006 & Segurança & O acesso ao sistema deve ser controlado por autenticação JWT (JSON Web Token). \\ \hline
-RNF007 & Segurança & As senhas dos usuários devem ser armazenadas utilizando hash. \\ \hline
-RNF008 & Segurança & Os prontuários eletrônicos devem ser armazenados de forma criptografada no banco de dados. \\ \hline
-RNF009 & Segurança & O acesso aos dados de pacientes deve ser restrito apenas aos profissionais autorizados. \\ \hline
-RNF010 & Segurança & Professores devem visualizar apenas observações de estudantes matriculados em suas disciplinas. \\ \hline
-RNF011 & Internacionalização & O sistema deve oferecer suporte a múltiplos idiomas (Português, Inglês, Espanhol). \\ \hline
-RNF012 & Confiabilidade & O sistema de envio de emails deve utilizar fila assíncrona para garantir entrega. \\ \hline
-RNF013 & Confiabilidade & O sistema de emails deve implementar retry automático em caso de falhas temporárias. \\ \hline
-RNF014 & Usabilidade & Todas as notificações por email devem ser enviadas em português brasileiro. \\ \hline
-RNF015 & Usabilidade & As datas e horários devem ser exibidas no fuso horário de Manaus (UTC-4). \\ \hline
-RNF016 & Desempenho & O sistema deve utilizar índices de banco de dados para otimizar consultas frequentes. \\ \hline
-RNF017 & Manutenibilidade & O código deve seguir padrões de nomenclatura e boas práticas de desenvolvimento. \\ \hline
-RNF018 & Manutenibilidade & Tipos de sessão e observações devem ser gerenciáveis sem alteração de código. \\ \hline
-RNF019 & Acessibilidade & A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado). \\ \hline
-RNF020 & Portabilidade & O sistema deve ser containerizável usando Docker para facilitar implantação. \\ \hline
+RNF002 & Usabilidade & A interface da tela de solicitaçao deve ser responsiva e adaptável a dispositivos móveis, tablets e desktops. \\ \hline
+RNF003 & Segurança & As senhas dos usuários devem ser armazenadas utilizando hash. \\ \hline
+RNF004 & Segurança & Os prontuários eletrônicos devem ser armazenados de forma criptografada no banco de dados. \\ \hline
+RNF005 & Segurança & O acesso aos dados de alunos deve ser restrito apenas aos profissionais autorizados. \\ \hline
+RNF006 & Segurança & Professores devem visualizar apenas observações de estudantes matriculados em suas disciplinas. \\ \hline
+RNF007 & Internacionalização & O sistema deve oferecer suporte a múltiplos idiomas (Português, Inglês, Espanhol). \\ \hline
+RNF008 & Confiabilidade & O sistema de envio de emails deve utilizar fila assíncrona para garantir entrega. \\ \hline
+RNF009 & Confiabilidade & O sistema de emails deve implementar retry automático em caso de falhas temporárias. \\ \hline
+RNF010 & Usabilidade & Todas as notificações por email devem ser enviadas em português brasileiro. \\ \hline
+RNF011 & Usabilidade & As datas e horários devem ser exibidas no fuso horário de Manaus (UTC-4). \\ \hline
+RNF012 & Desempenho & O sistema deve utilizar índices de banco de dados para otimizar atendimentos frequentes. \\ \hline
+RNF013 & Manutenibilidade & O código deve seguir padrões de nomenclatura e boas práticas de desenvolvimento. \\ \hline
+RNF014 & Manutenibilidade & Tipos de sessão e observações devem ser gerenciáveis sem alteração de código. \\ \hline
+RNF015 & Acessibilidade & A interface deve seguir princípios básicos de acessibilidade (contraste, navegação por teclado). \\ \hline
+RNF016 & Portabilidade & O sistema deve ser containerizável usando Docker para facilitar implantação. \\ \hline
 \end{longtable}
 }
 
@@ -171,7 +167,7 @@ Esta pilha tecnológica moderna e bem estabelecida no mercado garante que o sist
 
 A modelagem do banco de dados é um dos pilares fundamentais do sistema, pois define como as informações são estruturadas, armazenadas e relacionadas. O banco de dados foi projetado seguindo os princípios de normalização, garantindo a integridade referencial e minimizando redundâncias. O esquema completo do banco de dados está apresentado na Figura \ref{fig:db-schema}.
 
-\subsection{Modelo Entidade-Relacionamento}
+\subsection{Esquema do Banco de Dados}
 
 O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recursos avançados como tipos de dados customizados (ENUMs), triggers, funções e índices otimizados. A estrutura do banco de dados foi organizada em tabelas que representam as principais entidades do domínio do problema.
 
@@ -186,13 +182,13 @@ O sistema foi modelado utilizando o PostgreSQL como SGBD, aproveitando seus recu
 
     \item \textbf{sessions (Sessões)}: Registra as sessões de atendimento efetivamente realizadas. Está vinculada a um agendamento confirmado e armazena horário de início, término e anotações do profissional. As anotações são armazenadas de forma criptografada para garantir sigilo.
 
-    \item \textbf{session\_types (Tipos de Sessão)}: Tabela de configuração que define os tipos de atendimento disponíveis (ex: "Primeira Consulta", "Retorno", "Orientação"). Cada tipo possui nome, descrição e duração padrão em minutos.
+    \item \textbf{session\_types (Tipos de Sessão)}: Tabela de configuração que define os tipos de atendimento disponíveis (ex: "Primeiro Atendimento", "Retorno", "Orientação"). Cada tipo possui nome, descrição e duração padrão em minutos.
 
     \item \textbf{patient\_records (Prontuários)}: Armazena os prontuários eletrônicos dos estudantes. O conteúdo é criptografado, garantindo que apenas profissionais autorizados possam acessar informações sensíveis.
 
     \item \textbf{observations (Tipos de Observação)}: Tabela de configuração que categoriza os tipos de observações que podem ser feitas sobre estudantes (ex: "Dificuldade de Concentração", "Necessita Acompanhamento").
 
-    \item \textbf{patient\_observations (Observações de Pacientes)}: Registra observações específicas feitas por profissionais sobre estudantes. Estas observações podem ser compartilhadas de forma controlada com professores que lecionam para o estudante em questão.
+    \item \textbf{patient\_observations (Observações de Alunos)}: Registra observações específicas feitas por profissionais sobre estudantes. Estas observações podem ser compartilhadas de forma controlada com professores que lecionam para o estudante em questão.
 
     \item \textbf{semesters (Semestres)}: Representa os períodos letivos, com datas de início e fim. Permite organizar ofertas de disciplinas por período acadêmico.
 
@@ -228,11 +224,11 @@ O banco de dados implementa diversas estratégias para garantir segurança e int
 
 \textbf{Triggers de Atualização}: Um trigger \texttt{update\_modified\_column()} é aplicado a todas as tabelas, atualizando automaticamente o campo \texttt{updated\_at} sempre que um registro é modificado, permitindo auditoria de alterações.
 
-\textbf{Índices Otimizados}: O banco possui índices estratégicos em campos frequentemente utilizados em consultas:
+\textbf{Índices Otimizados}: O banco possui índices estratégicos em campos frequentemente utilizados em atendimentos:
 
 \begin{itemize}
     \item Índices em chaves estrangeiras para otimizar joins
-    \item Índices compostos em \texttt{(start\_time, end\_time)} para consultas de disponibilidade e agendamentos
+    \item Índices compostos em \texttt{(start\_time, end\_time)} para atendimentos de disponibilidade e agendamentos
     \item Índices em campos de busca como \texttt{student\_id}, \texttt{professional\_id}, \texttt{semester\_id}
 \end{itemize}
 

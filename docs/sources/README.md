@@ -3,7 +3,7 @@
 ## 🇧🇷 Português
 
 - [Projetos Similares](#projetos-similares)
-  - [1. Sistema para Gerenciamento e Agendamento de Consultas para Psicólogos e Clientes](#1-sistema-para-gerenciamento-e-agendamento-de-consultas-para-psicólogos-e-clientes)
+  - [1. Sistema para Gerenciamento e Agendamento de Atendimentos para Psicólogos e Clientes](#1-sistema-para-gerenciamento-e-agendamento-de-atendimentos-para-psicólogos-e-clientes)
   - [2. SystemPsi: Sistema Gerenciador para Psicólogos em Atuação Remota](#2-systempsi-sistema-gerenciador-para-psicólogos-em-atuação-remota)
   - [3. Sistema para Agendamento de Serviços](#3-sistema-para-agendamento-de-serviços)
 
@@ -20,19 +20,19 @@
 
 ---
 
-## 1. Sistema para Gerenciamento e Agendamento de Consultas para Psicólogos e Clientes
+## 1. Sistema para Gerenciamento e Agendamento de Atendimentos para Psicólogos e Clientes
 
 **Tipo:** Trabalho de Conclusão de Curso (TCC)  
 **Instituição:** Instituto Federal de Goiás (IFG)
 
 **Descrição:**
 
-> Propõe um sistema web para auxiliar na gestão de agendamentos de consultas para psicólogos. As funcionalidades incluem agendamento, anamneses e relatórios. O sistema define perfis de usuário para o profissional e para o cliente, algo similar ao que você propõe.
+> Propõe um sistema web para auxiliar na gestão de agendamentos de atendimentos para psicólogos. As funcionalidades incluem agendamento, anamneses e relatórios. O sistema define perfis de usuário para o profissional e para o cliente, algo similar ao que você propõe.
 
 **Tecnologias:** PHP, JavaScript, HTML, CSS e MySQL
 
 **Referência:**  
-SOUZA, Wesley Queiroz de. [Sistema para gerenciamento e agendamento de consultas para psicólogos e clientes: atendimentos online em meio a pandemia do Covid-19](https://repositorio.ifg.edu.br/handle/prefix/1726). Repositório Institucional do IFG.
+SOUZA, Wesley Queiroz de. [Sistema para gerenciamento e agendamento de atendimentos para psicólogos e clientes: atendimentos online em meio a pandemia do Covid-19](https://repositorio.ifg.edu.br/handle/prefix/1726). Repositório Institucional do IFG.
 
 **Relevância para o projeto:**  
 Ótima referência para a funcionalidade de agendamento e para a definição de perfis de usuário (psicóloga e estudante).
